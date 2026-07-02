@@ -1,0 +1,27 @@
+schema_version = 1
+
+[manifest]
+canonical = "monad.toml"
+mirror = ".monorepo.json"
+check_mirror_exists = true
+
+[docs]
+docs_nav = "docs.json"
+check_docs_nav_exists = true
+check_workpacket_index_exists = true
+
+[engines]
+registry_json = "engines.registry.json"
+registry_toml = "governance/engines.toml"
+check_engine_registry_exists = true
+
+[graphs]
+invariants = "governance/graph-invariants.toml"
+check_graph_invariants_exists = true
+
+[environment]
+contracts = [
+  "environments/dev.toml",
+  "environments/stage.toml",
+  "environments/prod.toml"
+]

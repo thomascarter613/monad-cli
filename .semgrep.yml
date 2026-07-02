@@ -1,0 +1,19 @@
+rules:
+  - id: monad-no-env-file-commit
+    message: "Do not commit real .env files."
+    severity: ERROR
+    languages: [generic]
+    paths:
+      include:
+        - ".env"
+        - ".env.*"
+      exclude:
+        - ".env.example"
+        - ".env.*.example"
+    pattern: "$X"
+
+  - id: monad-no-hardcoded-private-key
+    message: "Possible hardcoded private key."
+    severity: ERROR
+    languages: [generic]
+    pattern-regex: "-----BEGIN (RSA|DSA|EC|OPENSSH|PRIVATE) KEY-----"

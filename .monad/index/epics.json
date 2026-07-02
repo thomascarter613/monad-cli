@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "epics": [
+    {
+      "id": "EPIC-0000",
+      "title": "Work Packet Standard",
+      "status": "planned",
+      "workpackets": [
+        "WP-0000"
+      ]
+    },
+    {
+      "id": "EPIC-0001",
+      "title": "CLI and Workspace Foundation",
+      "status": "planned",
+      "workpackets": [
+        "WP-0001",
+        "WP-0002"
+      ]
+    },
+    {
+      "id": "EPIC-0002",
+      "title": "Plan and Safety Foundation",
+      "status": "planned",
+      "workpackets": [
+        "WP-0003",
+        "WP-0004"
+      ]
+    },
+    {
+      "id": "EPIC-0003",
+      "title": "Generation Foundation",
+      "status": "planned",
+      "workpackets": [
+        "WP-0005",
+        "WP-0006",
+        "WP-0007"
+      ]
+    },
+    {
+      "id": "EPIC-0004",
+      "title": "Core Workspace Operations",
+      "status": "planned",
+      "workpackets": [
+        "WP-0008"
+      ]
+    },
+    {
+      "id": "EPIC-0005",
+      "title": "Native Tool Coordination",
+      "status": "planned",
+      "workpackets": [
+        "WP-0009"
+      ]
+    },
+    {
+      "id": "EPIC-0006",
+      "title": "Graph Engine",
+      "status": "planned",
+      "workpackets": [
+        "WP-0010"
+      ]
+    },
+    {
+      "id": "EPIC-0007",
+      "title": "Docs ADR Workpacket",
+      "status": "planned",
+      "workpackets": [
+        "WP-0011"
+      ]
+    },
+    {
+      "id": "EPIC-0008",
+      "title": "Context and Handoff",
+      "status": "planned",
+      "workpackets": [
+        "WP-0012"
+      ]
+    },
+    {
+      "id": "EPIC-0009",
+      "title": "Policy and Governance",
+      "status": "planned",
+      "workpackets": [
+        "WP-0013"
+      ]
+    },
+    {
+      "id": "EPIC-0010",
+      "title": "Repository Evolution",
+      "status": "planned",
+      "workpackets": [
+        "WP-0014"
+      ]
+    },
+    {
+      "id": "EPIC-0011",
+      "title": "Release Workflow",
+      "status": "planned",
+      "workpackets": [
+        "WP-0015"
+      ]
+    },
+    {
+      "id": "EPIC-0012",
+      "title": "Quality Gates",
+      "status": "planned",
+      "workpackets": [
+        "WP-0016",
+        "WP-0017"
+      ]
+    },
+    {
+      "id": "EPIC-0013",
+      "title": "Dogfood",
+      "status": "planned",
+      "workpackets": [
+        "WP-0018"
+      ]
+    },
+    {
+      "id": "EPIC-0014",
+      "title": "Pre-v1 Stabilization",
+      "status": "planned",
+      "workpackets": [
+        "WP-0019",
+        "WP-0020",
+        "WP-0021",
+        "WP-0022",
+        "WP-0023",
+        "WP-0024",
+        "WP-0025",
+        "WP-0026",
+        "WP-0027",
+        "WP-0028",
+        "WP-0029"
+      ]
+    },
+    {
+      "id": "EPIC-0015",
+      "title": "Release",
+      "status": "planned",
+      "workpackets": [
+        "WP-0030",
+        "WP-0031"
+      ]
+    }
+  ]
+}

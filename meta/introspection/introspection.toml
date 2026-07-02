@@ -1,0 +1,9 @@
+schema_version = 1
+
+[introspection]
+project_graph = "monad graph projects"
+dependency_graph = "monad graph deps"
+task_graph = "monad graph tasks"
+context_pack = "monad context pack"
+handoff = "monad context handoff"
+drift_report = "scripts/drift-check.sh"

@@ -1,0 +1,17 @@
+pub const PLAN_SCHEMA_VERSION: u32 = 1;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PlanSummary {
+    pub operation: String,
+    pub step_count: usize,
+}
+
+impl PlanSummary {
+    #[must_use]
+    pub fn new(operation: impl Into<String>, step_count: usize) -> Self {
+        Self {
+            operation: operation.into(),
+            step_count,
+        }
+    }
+}

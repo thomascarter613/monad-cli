@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Monad Work Packet",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "type",
+    "id",
+    "title",
+    "status",
+    "epic",
+    "sequence",
+    "depends_on"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer"
+    },
+    "type": {
+      "const": "workpacket"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^WP-[0-9]{4}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "planned",
+        "ready",
+        "active",
+        "blocked",
+        "review",
+        "done",
+        "deferred",
+        "superseded"
+      ]
+    },
+    "priority": {
+      "type": "string"
+    },
+    "risk": {
+      "type": "string"
+    },
+    "epic": {
+      "type": "string",
+      "pattern": "^EPIC-[0-9]{4}$"
+    },
+    "sprint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^SPRINT-[0-9]{4}$"
+    },
+    "milestone": {
+      "type": "string"
+    },
+    "release_target": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer"
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^WP-[0-9]{4}$"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^WP-[0-9]{4}$"
+      }
+    },
+    "related_adrs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^ADR-[0-9]{4}$"
+      }
+    },
+    "related_docs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "affected_crates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "affected_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

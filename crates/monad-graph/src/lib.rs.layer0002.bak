@@ -1,0 +1,6 @@
+pub const GRAPH_SCHEMA_VERSION: u32 = 1;
+
+#[must_use]
+pub fn supported_graph_formats() -> &'static [&'static str] {
+    &["text", "json", "mermaid", "dot"]
+}

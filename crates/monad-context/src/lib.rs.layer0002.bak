@@ -1,0 +1,11 @@
+pub const CONTEXT_SCHEMA_VERSION: u32 = 1;
+
+#[must_use]
+pub fn default_context_outputs() -> &'static [&'static str] {
+    &[
+        ".monad/context/current-state.md",
+        ".monad/context/repo-map.md",
+        ".monad/context/command-catalog.md",
+        ".monad/context/handoff.md",
+    ]
+}

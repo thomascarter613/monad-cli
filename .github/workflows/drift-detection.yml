@@ -1,0 +1,14 @@
+name: Drift Detection
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  drift-detection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check governance drift
+        run: bash scripts/drift-check.sh

@@ -1,0 +1,8 @@
+schema_version = 1
+
+[registry]
+units_source = "monad.toml"
+domains_source = "domains/domain-map.toml"
+engines_source = "governance/engines.toml"
+policies_source = "governance/policies.toml"
+generated_index_dir = ".monad/index"

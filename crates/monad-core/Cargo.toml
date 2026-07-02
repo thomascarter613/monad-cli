@@ -1,0 +1,12 @@
+[package]
+name = "monad-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Core workspace model and shared types for Monad."
+
+[dependencies]
+serde.workspace = true
+thiserror.workspace = true

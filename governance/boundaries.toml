@@ -1,0 +1,72 @@
+# Domain boundary declarations.
+# These rules are intentionally conservative and are expected to become enforceable
+# through monad policy check, graph integrity checks, and future language-aware analyzers.
+
+[policy]
+default_dependency_mode = "deny-by-default-between-domains"
+allow_same_domain_dependencies = true
+allow_shared_kernel_dependencies = true
+boundary_changes_require_workpacket = true
+
+[[domains]]
+id = "domain:cli"
+name = "CLI"
+description = "Command parsing, CLI UX, command routing, and user-facing output."
+paths = ["crates/monad-cli/**"]
+allowed_import_domains = ["domain:core", "domain:plans", "domain:packs", "domain:policy", "domain:context", "domain:graph"]
+
+[[domains]]
+id = "domain:core"
+name = "Core"
+description = "Workspace model, manifest parsing, selectors, config, and shared errors."
+paths = ["crates/monad-core/**"]
+allowed_import_domains = []
+
+[[domains]]
+id = "domain:plans"
+name = "Plans"
+description = "Plan, diff, apply, filesystem safety, and mutation auditability."
+paths = ["crates/monad-plans/**"]
+allowed_import_domains = ["domain:core"]
+
+[[domains]]
+id = "domain:packs"
+name = "Packs"
+description = "Built-in packs, templates, scaffolds, and generator metadata."
+paths = ["crates/monad-packs/**"]
+allowed_import_domains = ["domain:core", "domain:plans"]
+
+[[domains]]
+id = "domain:policy"
+name = "Policy"
+description = "Governance policy checks, findings, waivers, and explanations."
+paths = ["crates/monad-policy/**"]
+allowed_import_domains = ["domain:core"]
+
+[[domains]]
+id = "domain:context"
+name = "Context"
+description = "Repo context packs, handoff files, AI/developer context material."
+paths = ["crates/monad-context/**"]
+allowed_import_domains = ["domain:core", "domain:graph", "domain:policy"]
+
+[[domains]]
+id = "domain:graph"
+name = "Graph"
+description = "Project, dependency, task, workpacket, and domain graph generation."
+paths = ["crates/monad-graph/**"]
+allowed_import_domains = ["domain:core"]
+
+[[domains]]
+id = "domain:governance"
+name = "Governance"
+description = "Governance docs, engine registry, policies, lifecycle contracts, and boundaries."
+paths = ["governance/**", "policies/**", "docs/governance/**"]
+allowed_import_domains = []
+
+[[domains]]
+id = "domain:operations"
+name = "Operations"
+description = "Operational runbooks, local infra, observability, and environment contracts."
+paths = ["ops/**", "observability/**", "environments/**", "compose.yaml"]
+allowed_import_domains = []

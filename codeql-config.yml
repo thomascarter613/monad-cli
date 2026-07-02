@@ -1,0 +1,9 @@
+name: "Monad CodeQL Config"
+
+queries:
+  - uses: security-and-quality
+
+paths-ignore:
+  - target
+  - .monad
+  - fixtures

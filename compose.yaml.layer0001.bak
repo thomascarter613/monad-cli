@@ -1,0 +1,5 @@
+services:
+  monad-dev:
+    build:
+      context: .
+    command: ["monad"]

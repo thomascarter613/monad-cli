@@ -1,0 +1,5 @@
+# This lock file is reserved for deterministic Monad workspace state.
+schema_version = 1
+workspace = "monad"
+default_scope = "@monad"
+generated_by = "layer-0000-init-monad-repo.sh"

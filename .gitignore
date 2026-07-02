@@ -1,0 +1,33 @@
+# OS/editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Rust
+/target/
+Cargo.lock.tmp
+
+# JS/tooling
+node_modules/
+.bun/
+.turbo/
+.moon/cache/
+coverage/
+dist/
+build/
+
+# Monad runtime state
+.monad/cache/
+.monad/tmp/
+
+# Logs/env
+*.log
+.env
+.env.*
+!.env.example
+
+# Generated local artifacts
+tmp/
+out/

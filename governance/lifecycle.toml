@@ -1,0 +1,46 @@
+# Lifecycle contracts for governed monorepo artifacts.
+
+[global]
+lifecycle_changes_require_workpacket = true
+deprecations_require_reason = true
+archives_require_revival_path = true
+destructive_changes_require_plan = true
+
+[unit_creation]
+requires_manifest_entry = true
+requires_readme = true
+requires_owner = false
+requires_policy_check = true
+requires_docs = true
+
+[unit_evolution]
+requires_workpacket = true
+requires_plan = true
+requires_tests_when_behavior_changes = true
+requires_docs_when_public_surface_changes = true
+
+[unit_deprecation]
+requires_status = "deprecated"
+requires_reason = true
+requires_replacement_or_no_replacement_note = true
+requires_removal_target = false
+
+[unit_archival]
+requires_status = "archived"
+requires_archive_note = true
+requires_no_active_dependents = true
+
+[workpacket_lifecycle]
+allowed_statuses = [
+  "proposed",
+  "planned",
+  "ready",
+  "active",
+  "blocked",
+  "review",
+  "done",
+  "deferred",
+  "superseded"
+]
+implementable_statuses = ["ready", "active"]
+completion_evidence_required = true

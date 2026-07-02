@@ -1,0 +1,35 @@
+name: Work packet
+description: Propose or track a Monad work packet
+title: "WP: "
+labels: ["workpacket"]
+body:
+  - type: input
+    id: workpacket_id
+    attributes:
+      label: Work packet ID
+      placeholder: WP-0000
+  - type: input
+    id: epic
+    attributes:
+      label: Epic
+      placeholder: EPIC-0000
+  - type: dropdown
+    id: class
+    attributes:
+      label: Work packet class
+      options:
+        - initialization
+        - evolution
+        - compliance
+        - release
+        - governance
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria

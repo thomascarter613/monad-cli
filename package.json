@@ -1,0 +1,25 @@
+{
+  "name": "@monad/repo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Monad Rust CLI monorepo",
+  "type": "module",
+  "packageManager": "bun@1.3.12",
+  "scripts": {
+    "check": "bash scripts/check.sh",
+    "test": "bash scripts/test.sh",
+    "smoke": "bash scripts/smoke.sh",
+    "format": "cargo fmt --all",
+    "format:check": "cargo fmt --all --check",
+    "lint": "cargo clippy --workspace --all-targets -- -D warnings",
+    "build": "cargo build --workspace",
+    "docs:check": "bash scripts/check-docs.sh"
+  },
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*",
+    "libs/*",
+    "tools/*"
+  ]
+}

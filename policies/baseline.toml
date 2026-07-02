@@ -1,0 +1,31 @@
+[[policies]]
+id = "required-readme"
+title = "Repository must have a README"
+severity = "error"
+type = "required_file"
+target = "workspace"
+file = "README.md"
+
+[[policies]]
+id = "required-agents"
+title = "Repository must have AGENTS.md"
+severity = "error"
+type = "required_file"
+target = "workspace"
+file = "AGENTS.md"
+
+[[policies]]
+id = "required-workpacket-standard"
+title = "Repository must define WP-0000"
+severity = "error"
+type = "required_file"
+target = "workspace"
+file = "docs/workpackets/WP-0000-work-packet-specification-and-schema.md"
+
+[[policies]]
+id = "forbid-dynamic-native-plugins-v1"
+title = "Dynamic native plugins are not allowed in v1"
+severity = "warn"
+type = "forbidden_capability"
+target = "workspace"
+capability = "dynamic-native-plugins"

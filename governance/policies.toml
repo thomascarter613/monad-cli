@@ -1,0 +1,41 @@
+# Governance policy pack.
+# This file defines repo-wide standards. Detailed policy rules may also live
+# in policies/*.toml.
+
+[commit_policy]
+style = "conventional-commits"
+examples = [
+  "feat(cli): add command skeleton",
+  "fix(plans): prevent writes outside workspace",
+  "docs(workpackets): define schema"
+]
+
+[branch_policy]
+default_branch = "main"
+prefer_short_lived_branches = true
+protect_main = true
+require_pr_for_main = true
+
+[release_policy]
+release_requires_green_ci = true
+release_requires_check = true
+release_requires_policy_check = true
+release_requires_context_handoff = true
+release_requires_changelog = true
+release_requires_tag = true
+
+[coding_standards]
+rust_format_required = true
+rust_clippy_required = true
+typescript_strict_required = true
+biome_required_when_typescript_present = true
+
+[documentation_policy]
+docs_update_required_for_public_surface_changes = true
+adr_required_for_architecture_decisions = true
+workpacket_required_for_nontrivial_changes = true
+
+[security_policy]
+secrets_must_not_be_committed = true
+dependency_trust_policy_required = true
+sbom_required_for_release = true

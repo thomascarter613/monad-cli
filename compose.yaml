@@ -1,0 +1,108 @@
+name: monad-local
+
+services:
+  monad-dev:
+    image: mcr.microsoft.com/devcontainers/rust:1-bookworm
+    profiles: ["dev"]
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    command: sleep infinity
+
+  postgres:
+    image: postgres:16.4-alpine
+    profiles: ["infra"]
+    environment:
+      POSTGRES_USER: monad
+      POSTGRES_PASSWORD: monad
+      POSTGRES_DB: monad
+    ports:
+      - "5432:5432"
+    volumes:
+      - monad-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U monad -d monad"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.6
+    profiles: ["infra"]
+    command: ["start-dev"]
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: dev-file
+    ports:
+      - "8080:8080"
+    volumes:
+      - monad-keycloak:/opt/keycloak/data
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.11.3
+    profiles: ["infra"]
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+      MEILI_MASTER_KEY: "local-dev-master-key"
+    ports:
+      - "7700:7700"
+    volumes:
+      - monad-meilisearch:/meili_data
+
+  mailpit:
+    image: axllent/mailpit:v1.20.5
+    profiles: ["infra"]
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  valkey:
+    image: valkey/valkey:8.0-alpine
+    profiles: ["infra"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - monad-valkey:/data
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.110.0
+    profiles: ["infra", "observability"]
+    command: ["--config=/etc/otel-collector.yaml"]
+    volumes:
+      - ./observability/otel-collector.yaml:/etc/otel-collector.yaml:ro
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8888:8888"
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    profiles: ["infra", "observability"]
+    volumes:
+      - ./observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - monad-prometheus:/prometheus
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    profiles: ["infra", "observability"]
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - monad-grafana:/var/lib/grafana
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  monad-postgres:
+  monad-keycloak:
+  monad-meilisearch:
+  monad-valkey:
+  monad-prometheus:
+  monad-grafana:

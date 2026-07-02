@@ -1,0 +1,21 @@
+schema_version = 1
+environment = "prod"
+
+[contract]
+purpose = "Production release and distribution"
+destructive_operations_allowed = false
+real_customer_data_allowed = false
+debug_logging_allowed = false
+requires_secret_store = true
+requires_policy_check_before_release = true
+requires_release_approval = true
+requires_sbom = true
+requires_changelog = true
+
+[release_gates]
+ci_green = true
+policy_check = true
+dependency_hygiene = true
+drift_detection = true
+sbom_generated = true
+tag_signed = false

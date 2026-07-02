@@ -1,0 +1,17 @@
+pub const BUILTIN_PACKS: &[&str] = &[
+    "typescript-bun",
+    "rust-crate",
+    "go-service",
+    "python-package",
+    "docs",
+    "adr",
+    "workpacket",
+    "policy",
+    "github-actions",
+    "docker",
+];
+
+#[must_use]
+pub fn builtin_packs() -> &'static [&'static str] {
+    BUILTIN_PACKS
+}

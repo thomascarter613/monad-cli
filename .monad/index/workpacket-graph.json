@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "nodes": [
+    {
+      "id": "WP-0000",
+      "title": "Work Packet Specification and Schema"
+    },
+    {
+      "id": "WP-0001",
+      "title": "Rust Workspace and CLI Skeleton"
+    },
+    {
+      "id": "WP-0002",
+      "title": "Core Workspace Model and Manifest Schema"
+    },
+    {
+      "id": "WP-0003",
+      "title": "Filesystem Safety Layer"
+    },
+    {
+      "id": "WP-0004",
+      "title": "Plan/Diff/Apply Engine"
+    },
+    {
+      "id": "WP-0005",
+      "title": "monad init"
+    },
+    {
+      "id": "WP-0006",
+      "title": "Built-in Packs and Templates"
+    },
+    {
+      "id": "WP-0007",
+      "title": "monad add and monad generate"
+    },
+    {
+      "id": "WP-0008",
+      "title": "Inspect List Check Doctor Config Version"
+    },
+    {
+      "id": "WP-0009",
+      "title": "Sync Run Build Test Lint Format Clean"
+    },
+    {
+      "id": "WP-0010",
+      "title": "Graph Engine"
+    },
+    {
+      "id": "WP-0011",
+      "title": "Docs ADR and Workpacket Commands"
+    },
+    {
+      "id": "WP-0012",
+      "title": "Context Pack and Handoff"
+    },
+    {
+      "id": "WP-0013",
+      "title": "Policy and Waiver System"
+    },
+    {
+      "id": "WP-0014",
+      "title": "Remove Rename Move Migrate Upgrade"
+    },
+    {
+      "id": "WP-0015",
+      "title": "Release Commands"
+    },
+    {
+      "id": "WP-0016",
+      "title": "Test Matrix and Fixtures"
+    },
+    {
+      "id": "WP-0017",
+      "title": "CI Security and Quality Gates"
+    },
+    {
+      "id": "WP-0018",
+      "title": "Dogfood Monad on Monad"
+    },
+    {
+      "id": "WP-0019",
+      "title": "Scope Lock Iteration"
+    },
+    {
+      "id": "WP-0020",
+      "title": "Command Contract Iteration"
+    },
+    {
+      "id": "WP-0021",
+      "title": "Workspace Model Integrity Iteration"
+    },
+    {
+      "id": "WP-0022",
+      "title": "Plan Diff Apply Safety Iteration"
+    },
+    {
+      "id": "WP-0023",
+      "title": "Generator Completeness Iteration"
+    },
+    {
+      "id": "WP-0024",
+      "title": "Native Tool Interop Iteration"
+    },
+    {
+      "id": "WP-0025",
+      "title": "Governance and Policy Iteration"
+    },
+    {
+      "id": "WP-0026",
+      "title": "Graph and Context Iteration"
+    },
+    {
+      "id": "WP-0027",
+      "title": "UX and Diagnostics Iteration"
+    },
+    {
+      "id": "WP-0028",
+      "title": "Test Matrix Iteration"
+    },
+    {
+      "id": "WP-0029",
+      "title": "Dogfood Iteration"
+    },
+    {
+      "id": "WP-0030",
+      "title": "Release Candidate Iteration"
+    },
+    {
+      "id": "WP-0031",
+      "title": "v1.0.0 Release"
+    }
+  ],
+  "edges": [
+    {
+      "from": "WP-0000",
+      "to": "WP-0001",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0001",
+      "to": "WP-0002",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0002",
+      "to": "WP-0003",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0003",
+      "to": "WP-0004",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0004",
+      "to": "WP-0005",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0005",
+      "to": "WP-0006",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0006",
+      "to": "WP-0007",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0007",
+      "to": "WP-0008",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0008",
+      "to": "WP-0009",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0009",
+      "to": "WP-0010",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0010",
+      "to": "WP-0011",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0011",
+      "to": "WP-0012",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0012",
+      "to": "WP-0013",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0013",
+      "to": "WP-0014",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0014",
+      "to": "WP-0015",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0015",
+      "to": "WP-0016",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0016",
+      "to": "WP-0017",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0017",
+      "to": "WP-0018",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0018",
+      "to": "WP-0019",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0019",
+      "to": "WP-0020",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0020",
+      "to": "WP-0021",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0021",
+      "to": "WP-0022",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0022",
+      "to": "WP-0023",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0023",
+      "to": "WP-0024",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0024",
+      "to": "WP-0025",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0025",
+      "to": "WP-0026",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0026",
+      "to": "WP-0027",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0027",
+      "to": "WP-0028",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0028",
+      "to": "WP-0029",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0029",
+      "to": "WP-0030",
+      "type": "depends_on"
+    },
+    {
+      "from": "WP-0030",
+      "to": "WP-0031",
+      "type": "depends_on"
+    }
+  ]
+}

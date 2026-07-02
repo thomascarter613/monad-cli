@@ -1,0 +1,17 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "crates/**/src/**/*.rs",
+    "scripts/**/*.sh"
+  ],
+  "project": [
+    "**/*.{ts,tsx,js,jsx,json,md}",
+    "!target/**",
+    "!.monad/**"
+  ],
+  "ignore": [
+    "target/**",
+    ".monad/**",
+    "fixtures/**"
+  ]
+}

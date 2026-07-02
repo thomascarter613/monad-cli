@@ -1,0 +1,7 @@
+schema_version = 1
+
+[scheduler]
+default_runner = "bun"
+supported_runners = ["bun", "turbo", "moon", "cargo"]
+strategy = "delegate-to-native-tools"
+requires_graph_integrity = true

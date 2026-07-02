@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "workpackets": [
+    {
+      "id": "WP-0000",
+      "title": "Work Packet Specification and Schema",
+      "slug": "work-packet-specification-and-schema",
+      "status": "planned",
+      "epic": "EPIC-0000",
+      "sprint": "SPRINT-0000",
+      "milestone": "v0.0.1",
+      "sequence": 0,
+      "depends_on": [],
+      "blocks": [
+        "WP-0001"
+      ],
+      "path": "docs/workpackets/WP-0000-work-packet-specification-and-schema.md"
+    },
+    {
+      "id": "WP-0001",
+      "title": "Rust Workspace and CLI Skeleton",
+      "slug": "rust-workspace-and-cli-skeleton",
+      "status": "planned",
+      "epic": "EPIC-0001",
+      "sprint": "SPRINT-0001",
+      "milestone": "v0.1.0",
+      "sequence": 1,
+      "depends_on": [
+        "WP-0000"
+      ],
+      "blocks": [
+        "WP-0002"
+      ],
+      "path": "docs/workpackets/WP-0001-rust-workspace-and-cli-skeleton.md"
+    },
+    {
+      "id": "WP-0002",
+      "title": "Core Workspace Model and Manifest Schema",
+      "slug": "core-workspace-model-and-manifest-schema",
+      "status": "planned",
+      "epic": "EPIC-0001",
+      "sprint": "SPRINT-0001",
+      "milestone": "v0.2.0",
+      "sequence": 2,
+      "depends_on": [
+        "WP-0001"
+      ],
+      "blocks": [
+        "WP-0003",
+        "WP-0004"
+      ],
+      "path": "docs/workpackets/WP-0002-core-workspace-model-and-manifest-schema.md"
+    },
+    {
+      "id": "WP-0003",
+      "title": "Filesystem Safety Layer",
+      "slug": "filesystem-safety-layer",
+      "status": "planned",
+      "epic": "EPIC-0002",
+      "sprint": "SPRINT-0002",
+      "milestone": "v0.3.0",
+      "sequence": 3,
+      "depends_on": [
+        "WP-0002"
+      ],
+      "blocks": [
+        "WP-0004"
+      ],
+      "path": "docs/workpackets/WP-0003-filesystem-safety-layer.md"
+    },
+    {
+      "id": "WP-0004",
+      "title": "Plan/Diff/Apply Engine",
+      "slug": "plan-diff-apply-engine",
+      "status": "planned",
+      "epic": "EPIC-0002",
+      "sprint": "SPRINT-0002",
+      "milestone": "v0.3.0",
+      "sequence": 4,
+      "depends_on": [
+        "WP-0003"
+      ],
+      "blocks": [
+        "WP-0005",
+        "WP-0007",
+        "WP-0014"
+      ],
+      "path": "docs/workpackets/WP-0004-plan-diff-apply-engine.md"
+    },
+    {
+      "id": "WP-0005",
+      "title": "monad init",
+      "slug": "monad-init",
+      "status": "planned",
+      "epic": "EPIC-0003",
+      "sprint": "SPRINT-0003",
+      "milestone": "v0.4.0",
+      "sequence": 5,
+      "depends_on": [
+        "WP-0004"
+      ],
+      "blocks": [
+        "WP-0006",
+        "WP-0007"
+      ],
+      "path": "docs/workpackets/WP-0005-monad-init.md"
+    },
+    {
+      "id": "WP-0006",
+      "title": "Built-in Packs and Templates",
+      "slug": "built-in-packs-and-templates",
+      "status": "planned",
+      "epic": "EPIC-0003",
+      "sprint": "SPRINT-0003",
+      "milestone": "v0.4.0",
+      "sequence": 6,
+      "depends_on": [
+        "WP-0005"
+      ],
+      "blocks": [
+        "WP-0007"
+      ],
+      "path": "docs/workpackets/WP-0006-built-in-packs-and-templates.md"
+    },
+    {
+      "id": "WP-0007",
+      "title": "monad add and monad generate",
+      "slug": "monad-add-and-monad-generate",
+      "status": "planned",
+      "epic": "EPIC-0003",
+      "sprint": "SPRINT-0004",
+      "milestone": "v0.4.0",
+      "sequence": 7,
+      "depends_on": [
+        "WP-0006"
+      ],
+      "blocks": [
+        "WP-0008"
+      ],
+      "path": "docs/workpackets/WP-0007-monad-add-and-monad-generate.md"
+    },
+    {
+      "id": "WP-0008",
+      "title": "Inspect List Check Doctor Config Version",
+      "slug": "inspect-list-check-doctor-config-version",
+      "status": "planned",
+      "epic": "EPIC-0004",
+      "sprint": "SPRINT-0004",
+      "milestone": "v0.5.0",
+      "sequence": 8,
+      "depends_on": [
+        "WP-0007"
+      ],
+      "blocks": [
+        "WP-0009"
+      ],
+      "path": "docs/workpackets/WP-0008-inspect-list-check-doctor-config-version.md"
+    },
+    {
+      "id": "WP-0009",
+      "title": "Sync Run Build Test Lint Format Clean",
+      "slug": "sync-run-build-test-lint-format-clean",
+      "status": "planned",
+      "epic": "EPIC-0005",
+      "sprint": "SPRINT-0005",
+      "milestone": "v0.6.0",
+      "sequence": 9,
+      "depends_on": [
+        "WP-0008"
+      ],
+      "blocks": [
+        "WP-0010"
+      ],
+      "path": "docs/workpackets/WP-0009-sync-run-build-test-lint-format-clean.md"
+    },
+    {
+      "id": "WP-0010",
+      "title": "Graph Engine",
+      "slug": "graph-engine",
+      "status": "planned",
+      "epic": "EPIC-0006",
+      "sprint": "SPRINT-0006",
+      "milestone": "v0.7.0",
+      "sequence": 10,
+      "depends_on": [
+        "WP-0009"
+      ],
+      "blocks": [
+        "WP-0012"
+      ],
+      "path": "docs/workpackets/WP-0010-graph-engine.md"
+    },
+    {
+      "id": "WP-0011",
+      "title": "Docs ADR and Workpacket Commands",
+      "slug": "docs-adr-and-workpacket-commands",
+      "status": "planned",
+      "epic": "EPIC-0007",
+      "sprint": "SPRINT-0006",
+      "milestone": "v0.7.0",
+      "sequence": 11,
+      "depends_on": [
+        "WP-0010"
+      ],
+      "blocks": [
+        "WP-0012"
+      ],
+      "path": "docs/workpackets/WP-0011-docs-adr-and-workpacket-commands.md"
+    },
+    {
+      "id": "WP-0012",
+      "title": "Context Pack and Handoff",
+      "slug": "context-pack-and-handoff",
+      "status": "planned",
+      "epic": "EPIC-0008",
+      "sprint": "SPRINT-0007",
+      "milestone": "v0.7.0",
+      "sequence": 12,
+      "depends_on": [
+        "WP-0011"
+      ],
+      "blocks": [
+        "WP-0013"
+      ],
+      "path": "docs/workpackets/WP-0012-context-pack-and-handoff.md"
+    },
+    {
+      "id": "WP-0013",
+      "title": "Policy and Waiver System",
+      "slug": "policy-and-waiver-system",
+      "status": "planned",
+      "epic": "EPIC-0009",
+      "sprint": "SPRINT-0007",
+      "milestone": "v0.8.0",
+      "sequence": 13,
+      "depends_on": [
+        "WP-0012"
+      ],
+      "blocks": [
+        "WP-0014"
+      ],
+      "path": "docs/workpackets/WP-0013-policy-and-waiver-system.md"
+    },
+    {
+      "id": "WP-0014",
+      "title": "Remove Rename Move Migrate Upgrade",
+      "slug": "remove-rename-move-migrate-upgrade",
+      "status": "planned",
+      "epic": "EPIC-0010",
+      "sprint": "SPRINT-0008",
+      "milestone": "v0.8.0",
+      "sequence": 14,
+      "depends_on": [
+        "WP-0013"
+      ],
+      "blocks": [
+        "WP-0015"
+      ],
+      "path": "docs/workpackets/WP-0014-remove-rename-move-migrate-upgrade.md"
+    },
+    {
+      "id": "WP-0015",
+      "title": "Release Commands",
+      "slug": "release-commands",
+      "status": "planned",
+      "epic": "EPIC-0011",
+      "sprint": "SPRINT-0008",
+      "milestone": "v0.8.0",
+      "sequence": 15,
+      "depends_on": [
+        "WP-0014"
+      ],
+      "blocks": [
+        "WP-0016"
+      ],
+      "path": "docs/workpackets/WP-0015-release-commands.md"
+    },
+    {
+      "id": "WP-0016",
+      "title": "Test Matrix and Fixtures",
+      "slug": "test-matrix-and-fixtures",
+      "status": "planned",
+      "epic": "EPIC-0012",
+      "sprint": "SPRINT-0009",
+      "milestone": "v0.9.0",
+      "sequence": 16,
+      "depends_on": [
+        "WP-0015"
+      ],
+      "blocks": [
+        "WP-0017"
+      ],
+      "path": "docs/workpackets/WP-0016-test-matrix-and-fixtures.md"
+    },
+    {
+      "id": "WP-0017",
+      "title": "CI Security and Quality Gates",
+      "slug": "ci-security-and-quality-gates",
+      "status": "planned",
+      "epic": "EPIC-0012",
+      "sprint": "SPRINT-0009",
+      "milestone": "v0.9.0",
+      "sequence": 17,
+      "depends_on": [
+        "WP-0016"
+      ],
+      "blocks": [
+        "WP-0018"
+      ],
+      "path": "docs/workpackets/WP-0017-ci-security-and-quality-gates.md"
+    },
+    {
+      "id": "WP-0018",
+      "title": "Dogfood Monad on Monad",
+      "slug": "dogfood-monad-on-monad",
+      "status": "planned",
+      "epic": "EPIC-0013",
+      "sprint": "SPRINT-0010",
+      "milestone": "v0.9.0",
+      "sequence": 18,
+      "depends_on": [
+        "WP-0017"
+      ],
+      "blocks": [
+        "WP-0019"
+      ],
+      "path": "docs/workpackets/WP-0018-dogfood-monad-on-monad.md"
+    },
+    {
+      "id": "WP-0019",
+      "title": "Scope Lock Iteration",
+      "slug": "scope-lock-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0011",
+      "milestone": "v0.9.0",
+      "sequence": 19,
+      "depends_on": [
+        "WP-0018"
+      ],
+      "blocks": [
+        "WP-0020"
+      ],
+      "path": "docs/workpackets/WP-0019-scope-lock-iteration.md"
+    },
+    {
+      "id": "WP-0020",
+      "title": "Command Contract Iteration",
+      "slug": "command-contract-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0011",
+      "milestone": "v0.9.0",
+      "sequence": 20,
+      "depends_on": [
+        "WP-0019"
+      ],
+      "blocks": [
+        "WP-0021"
+      ],
+      "path": "docs/workpackets/WP-0020-command-contract-iteration.md"
+    },
+    {
+      "id": "WP-0021",
+      "title": "Workspace Model Integrity Iteration",
+      "slug": "workspace-model-integrity-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0011",
+      "milestone": "v0.9.0",
+      "sequence": 21,
+      "depends_on": [
+        "WP-0020"
+      ],
+      "blocks": [
+        "WP-0022"
+      ],
+      "path": "docs/workpackets/WP-0021-workspace-model-integrity-iteration.md"
+    },
+    {
+      "id": "WP-0022",
+      "title": "Plan Diff Apply Safety Iteration",
+      "slug": "plan-diff-apply-safety-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0012",
+      "milestone": "v0.9.0",
+      "sequence": 22,
+      "depends_on": [
+        "WP-0021"
+      ],
+      "blocks": [
+        "WP-0023"
+      ],
+      "path": "docs/workpackets/WP-0022-plan-diff-apply-safety-iteration.md"
+    },
+    {
+      "id": "WP-0023",
+      "title": "Generator Completeness Iteration",
+      "slug": "generator-completeness-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0012",
+      "milestone": "v0.9.0",
+      "sequence": 23,
+      "depends_on": [
+        "WP-0022"
+      ],
+      "blocks": [
+        "WP-0024"
+      ],
+      "path": "docs/workpackets/WP-0023-generator-completeness-iteration.md"
+    },
+    {
+      "id": "WP-0024",
+      "title": "Native Tool Interop Iteration",
+      "slug": "native-tool-interop-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0012",
+      "milestone": "v0.9.0",
+      "sequence": 24,
+      "depends_on": [
+        "WP-0023"
+      ],
+      "blocks": [
+        "WP-0025"
+      ],
+      "path": "docs/workpackets/WP-0024-native-tool-interop-iteration.md"
+    },
+    {
+      "id": "WP-0025",
+      "title": "Governance and Policy Iteration",
+      "slug": "governance-and-policy-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0013",
+      "milestone": "v0.9.0",
+      "sequence": 25,
+      "depends_on": [
+        "WP-0024"
+      ],
+      "blocks": [
+        "WP-0026"
+      ],
+      "path": "docs/workpackets/WP-0025-governance-and-policy-iteration.md"
+    },
+    {
+      "id": "WP-0026",
+      "title": "Graph and Context Iteration",
+      "slug": "graph-and-context-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0013",
+      "milestone": "v0.9.0",
+      "sequence": 26,
+      "depends_on": [
+        "WP-0025"
+      ],
+      "blocks": [
+        "WP-0027"
+      ],
+      "path": "docs/workpackets/WP-0026-graph-and-context-iteration.md"
+    },
+    {
+      "id": "WP-0027",
+      "title": "UX and Diagnostics Iteration",
+      "slug": "ux-and-diagnostics-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0013",
+      "milestone": "v0.9.0",
+      "sequence": 27,
+      "depends_on": [
+        "WP-0026"
+      ],
+      "blocks": [
+        "WP-0028"
+      ],
+      "path": "docs/workpackets/WP-0027-ux-and-diagnostics-iteration.md"
+    },
+    {
+      "id": "WP-0028",
+      "title": "Test Matrix Iteration",
+      "slug": "test-matrix-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0014",
+      "milestone": "v0.9.0",
+      "sequence": 28,
+      "depends_on": [
+        "WP-0027"
+      ],
+      "blocks": [
+        "WP-0029"
+      ],
+      "path": "docs/workpackets/WP-0028-test-matrix-iteration.md"
+    },
+    {
+      "id": "WP-0029",
+      "title": "Dogfood Iteration",
+      "slug": "dogfood-iteration",
+      "status": "planned",
+      "epic": "EPIC-0014",
+      "sprint": "SPRINT-0014",
+      "milestone": "v0.9.0",
+      "sequence": 29,
+      "depends_on": [
+        "WP-0028"
+      ],
+      "blocks": [
+        "WP-0030"
+      ],
+      "path": "docs/workpackets/WP-0029-dogfood-iteration.md"
+    },
+    {
+      "id": "WP-0030",
+      "title": "Release Candidate Iteration",
+      "slug": "release-candidate-iteration",
+      "status": "planned",
+      "epic": "EPIC-0015",
+      "sprint": "SPRINT-0015",
+      "milestone": "v1.0.0-rc.1",
+      "sequence": 30,
+      "depends_on": [
+        "WP-0029"
+      ],
+      "blocks": [
+        "WP-0031"
+      ],
+      "path": "docs/workpackets/WP-0030-release-candidate-iteration.md"
+    },
+    {
+      "id": "WP-0031",
+      "title": "v1.0.0 Release",
+      "slug": "v100-release",
+      "status": "planned",
+      "epic": "EPIC-0015",
+      "sprint": "SPRINT-0015",
+      "milestone": "v1.0.0",
+      "sequence": 31,
+      "depends_on": [
+        "WP-0030"
+      ],
+      "blocks": [],
+      "path": "docs/workpackets/WP-0031-v100-release.md"
+    }
+  ]
+}

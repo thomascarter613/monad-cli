@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "sprints": [
+    {
+      "id": "SPRINT-0000",
+      "title": "Work Packet Standard",
+      "status": "planned",
+      "workpackets": [
+        "WP-0000"
+      ]
+    },
+    {
+      "id": "SPRINT-0001",
+      "title": "Foundation",
+      "status": "planned",
+      "workpackets": [
+        "WP-0001",
+        "WP-0002"
+      ]
+    },
+    {
+      "id": "SPRINT-0002",
+      "title": "Safety and Plans",
+      "status": "planned",
+      "workpackets": [
+        "WP-0003",
+        "WP-0004"
+      ]
+    },
+    {
+      "id": "SPRINT-0003",
+      "title": "Init and Packs",
+      "status": "planned",
+      "workpackets": [
+        "WP-0005",
+        "WP-0006"
+      ]
+    },
+    {
+      "id": "SPRINT-0004",
+      "title": "Generate and Inspect",
+      "status": "planned",
+      "workpackets": [
+        "WP-0007",
+        "WP-0008"
+      ]
+    },
+    {
+      "id": "SPRINT-0005",
+      "title": "Native Tooling",
+      "status": "planned",
+      "workpackets": [
+        "WP-0009"
+      ]
+    },
+    {
+      "id": "SPRINT-0006",
+      "title": "Graph Docs ADR Workpacket",
+      "status": "planned",
+      "workpackets": [
+        "WP-0010",
+        "WP-0011"
+      ]
+    },
+    {
+      "id": "SPRINT-0007",
+      "title": "Context and Policy",
+      "status": "planned",
+      "workpackets": [
+        "WP-0012",
+        "WP-0013"
+      ]
+    },
+    {
+      "id": "SPRINT-0008",
+      "title": "Evolution and Release",
+      "status": "planned",
+      "workpackets": [
+        "WP-0014",
+        "WP-0015"
+      ]
+    },
+    {
+      "id": "SPRINT-0009",
+      "title": "Testing and CI",
+      "status": "planned",
+      "workpackets": [
+        "WP-0016",
+        "WP-0017"
+      ]
+    },
+    {
+      "id": "SPRINT-0010",
+      "title": "Dogfood",
+      "status": "planned",
+      "workpackets": [
+        "WP-0018"
+      ]
+    },
+    {
+      "id": "SPRINT-0011",
+      "title": "Stabilization A",
+      "status": "planned",
+      "workpackets": [
+        "WP-0019",
+        "WP-0020",
+        "WP-0021"
+      ]
+    },
+    {
+      "id": "SPRINT-0012",
+      "title": "Stabilization B",
+      "status": "planned",
+      "workpackets": [
+        "WP-0022",
+        "WP-0023",
+        "WP-0024"
+      ]
+    },
+    {
+      "id": "SPRINT-0013",
+      "title": "Stabilization C",
+      "status": "planned",
+      "workpackets": [
+        "WP-0025",
+        "WP-0026",
+        "WP-0027"
+      ]
+    },
+    {
+      "id": "SPRINT-0014",
+      "title": "Final Stabilization",
+      "status": "planned",
+      "workpackets": [
+        "WP-0028",
+        "WP-0029"
+      ]
+    },
+    {
+      "id": "SPRINT-0015",
+      "title": "Release",
+      "status": "planned",
+      "workpackets": [
+        "WP-0030",
+        "WP-0031"
+      ]
+    }
+  ]
+}

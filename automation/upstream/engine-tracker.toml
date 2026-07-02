@@ -1,0 +1,46 @@
+schema_version = 1
+
+[policy]
+tracking_requires_review = true
+automatic_updates_allowed = false
+renovate_allowed = true
+
+[[tracked]]
+name = "rust"
+source = "rust-toolchain.toml"
+
+[[tracked]]
+name = "bun"
+source = "package-manager"
+
+[[tracked]]
+name = "turbo"
+source = "package.json"
+
+[[tracked]]
+name = "moon"
+source = "package.json"
+
+[[tracked]]
+name = "biome"
+source = "package.json"
+
+[[tracked]]
+name = "knip"
+source = "package.json"
+
+[[tracked]]
+name = "syncpack"
+source = "package.json"
+
+[[tracked]]
+name = "playwright"
+source = "package.json"
+
+[[tracked]]
+name = "vitest"
+source = "package.json"
+
+[[tracked]]
+name = "changesets"
+source = "package.json"

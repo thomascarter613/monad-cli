@@ -1,0 +1,40 @@
+# Graph invariants for Monad.
+# These define allowed shapes and failure conditions for the project graph,
+# task graph, dependency graph, workpacket graph, and domain graph.
+
+[project_graph]
+require_all_units_have_ids = true
+require_all_units_have_paths = true
+require_unit_paths_exist = true
+forbid_duplicate_unit_ids = true
+forbid_duplicate_unit_paths = true
+
+[dependency_graph]
+forbid_cycles_by_default = true
+allow_cycles_with_explicit_waiver = false
+forbid_cross_domain_dependencies_without_rule = true
+forbid_app_to_app_dependencies = true
+forbid_service_to_app_dependencies = true
+allow_package_to_lib_dependencies = true
+allow_app_to_package_dependencies = true
+allow_service_to_package_dependencies = true
+allow_service_to_lib_dependencies = true
+
+[task_graph]
+forbid_cycles = true
+require_declared_tasks = true
+require_build_before_release = true
+require_check_before_release = true
+require_policy_check_before_release = true
+
+[workpacket_graph]
+forbid_cycles = true
+require_depends_on_targets_exist = true
+require_blocks_targets_exist = false
+require_sequence_numbers = true
+require_wp_0000_first = true
+
+[domain_graph]
+forbid_undeclared_domains = true
+require_domain_paths = true
+require_boundary_rules = true

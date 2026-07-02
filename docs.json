@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "title": "Monad Documentation",
+  "description": "Documentation information architecture for the Monad monorepo operating-system CLI.",
+  "canonicalIndex": "docs/00-index.md",
+  "navigation": [
+    {
+      "title": "Product",
+      "items": [
+        "docs/product/v1-scope.md",
+        "docs/product/v1-non-goals.md",
+        "docs/product/v1-command-support-matrix.md"
+      ]
+    },
+    {
+      "title": "Architecture",
+      "items": [
+        "docs/architecture/README.md"
+      ]
+    },
+    {
+      "title": "Governance",
+      "items": [
+        "docs/governance/README.md",
+        "docs/governance/drift-detection.md",
+        "governance/engines.toml",
+        "governance/boundaries.toml",
+        "governance/graph-invariants.toml",
+        "governance/lifecycle.toml",
+        "governance/policies.toml"
+      ]
+    },
+    {
+      "title": "Work Packets",
+      "items": [
+        "docs/workpackets/README.md",
+        "docs/workpackets/schema.md",
+        "docs/workpackets/index.md",
+        "docs/workpackets/categories/README.md"
+      ]
+    },
+    {
+      "title": "Operations",
+      "items": [
+        "ops/runbooks/local-dev.md",
+        "ops/runbooks/debugging.md",
+        "ops/runbooks/ci-failures.md",
+        "ops/runbooks/incident-response.md"
+      ]
+    },
+    {
+      "title": "Security and Compliance",
+      "items": [
+        "security/threat-model.md",
+        "security/secrets.md",
+        "security/dependency-trust.md",
+        "compliance/README.md",
+        "compliance/security-baseline.md",
+        "compliance/sbom.md"
+      ]
+    },
+    {
+      "title": "Observability",
+      "items": [
+        "observability/logging.md",
+        "observability/metrics.md",
+        "observability/tracing.md",
+        "observability/ci-telemetry.md"
+      ]
+    },
+    {
+      "title": "Developer Experience",
+      "items": [
+        "docs/development/onboarding.md",
+        "docs/development/local-dev-accelerator.md"
+      ]
+    }
+  ]
+}

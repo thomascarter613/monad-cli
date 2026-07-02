@@ -1,0 +1,8 @@
+schema_version = 1
+
+[kernel]
+canonical_manifest = "monad.toml"
+lockfile = "monad.lock"
+state_dir = ".monad"
+mutation_model = "plan-diff-apply"
+policy_model = "governed-with-waivers"

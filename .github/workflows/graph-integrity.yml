@@ -1,0 +1,14 @@
+name: Graph Integrity
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  graph-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check graph integrity inputs
+        run: bash scripts/graph-integrity.sh

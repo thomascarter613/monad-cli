@@ -1,0 +1,27 @@
+schema_version = 1
+
+[policy]
+autofix_requires_explicit_command = true
+autofix_must_not_commit = true
+autofix_must_preserve_user_files = true
+
+[[fixers]]
+name = "cargo-fmt"
+command = "cargo fmt --all"
+applies_to = ["rust"]
+
+[[fixers]]
+name = "biome"
+command = "bunx biome check --write ."
+applies_to = ["typescript", "javascript", "json"]
+
+[[fixers]]
+name = "syncpack"
+command = "bunx syncpack fix-mismatches"
+applies_to = ["package-json"]
+
+[[fixers]]
+name = "knip"
+command = "bunx knip"
+applies_to = ["dependency-pruning"]
+auto_apply = false

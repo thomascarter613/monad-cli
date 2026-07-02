@@ -1,0 +1,25 @@
+[workspace]
+members = [
+  "crates/monad-cli",
+  "crates/monad-core",
+  "crates/monad-plans",
+  "crates/monad-packs",
+  "crates/monad-policy",
+  "crates/monad-context",
+  "crates/monad-graph",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80"
+license = "MIT"
+authors = ["Monad Contributors"]
+description = "Monad is a governed monorepo operating-system CLI."
+
+[workspace.dependencies]
+clap = "4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"

@@ -1,0 +1,103 @@
+# Deterministic engine registry for Monad.
+# monad.toml remains canonical for workspace intent. This file declares hidden
+# and supporting engines that affect builds, checks, generation, governance, and
+# automation.
+
+[policy]
+no_implicit_engines = true
+pin_versions = true
+engine_changes_require_workpacket = true
+engine_changes_require_review = true
+prefer_local_tooling = true
+
+[[engines]]
+name = "rust"
+category = "language"
+version_source = "rust-toolchain.toml"
+required = true
+
+[[engines]]
+name = "cargo"
+category = "build"
+version_source = "rust-toolchain.toml"
+required = true
+
+[[engines]]
+name = "bun"
+category = "package-manager"
+version = "1.1.x"
+required = true
+
+[[engines]]
+name = "turbo"
+category = "task-orchestrator"
+package = "turbo"
+version = "^2.0.0"
+required = false
+
+[[engines]]
+name = "moon"
+category = "task-orchestrator"
+package = "@moonrepo/cli"
+version = "^1.30.0"
+required = false
+
+[[engines]]
+name = "biome"
+category = "code-quality"
+package = "@biomejs/biome"
+version = "^1.9.0"
+required = false
+
+[[engines]]
+name = "knip"
+category = "dependency-pruning"
+package = "knip"
+version = "^5.0.0"
+required = false
+
+[[engines]]
+name = "syncpack"
+category = "dependency-consistency"
+package = "syncpack"
+version = "^13.0.0"
+required = false
+
+[[engines]]
+name = "vitest"
+category = "testing"
+package = "vitest"
+version = "^2.0.0"
+required = false
+
+[[engines]]
+name = "playwright"
+category = "e2e-testing"
+package = "@playwright/test"
+version = "^1.45.0"
+required = false
+
+[[engines]]
+name = "changesets"
+category = "versioning"
+package = "@changesets/cli"
+version = "^2.27.0"
+required = false
+
+[[engines]]
+name = "semgrep"
+category = "static-analysis"
+version = "managed-by-ci-or-local-install"
+required = false
+
+[[engines]]
+name = "syft"
+category = "sbom"
+version = "managed-by-ci-or-local-install"
+required = false
+
+[[engines]]
+name = "cyclonedx"
+category = "sbom"
+version = "managed-by-ci-or-local-install"
+required = false

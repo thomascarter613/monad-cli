@@ -1,0 +1,3 @@
+# Repo-visible policy waivers.
+# Waivers must include reason, owner, and expiration.
+waivers = []

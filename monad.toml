@@ -1,0 +1,96 @@
+schema_version = 1
+
+[workspace]
+name = "monad"
+version = "0.0.1"
+package_manager = "bun"
+default_scope = "@monad"
+preset = "governed"
+
+[paths]
+apps = "apps"
+services = "services"
+packages = "packages"
+libs = "libs"
+tools = "tools"
+infra = "infra"
+configs = "configs"
+contracts = "contracts"
+policies = "policies"
+docs = "docs"
+scripts = "scripts"
+tests = "tests"
+agents = "agents"
+state = ".monad"
+
+[tasks]
+runner = "bun"
+
+[tasks.commands]
+build = "bun run build"
+test = "bun run test"
+lint = "bun run lint"
+format = "bun run format"
+
+[features]
+plans = true
+policy = true
+context = true
+graph = true
+workpackets = true
+
+[[units]]
+id = "tool:cli"
+kind = "tool"
+name = "cli"
+path = "crates/monad-cli"
+language = "rust"
+scope = "@monad"
+
+[[units]]
+id = "lib:core"
+kind = "lib"
+name = "core"
+path = "crates/monad-core"
+language = "rust"
+scope = "@monad"
+
+[[units]]
+id = "lib:plans"
+kind = "lib"
+name = "plans"
+path = "crates/monad-plans"
+language = "rust"
+scope = "@monad"
+
+[[units]]
+id = "lib:packs"
+kind = "lib"
+name = "packs"
+path = "crates/monad-packs"
+language = "rust"
+scope = "@monad"
+
+[[units]]
+id = "lib:policy"
+kind = "lib"
+name = "policy"
+path = "crates/monad-policy"
+language = "rust"
+scope = "@monad"
+
+[[units]]
+id = "lib:context"
+kind = "lib"
+name = "context"
+path = "crates/monad-context"
+language = "rust"
+scope = "@monad"
+
+[[units]]
+id = "lib:graph"
+kind = "lib"
+name = "graph"
+path = "crates/monad-graph"
+language = "rust"
+scope = "@monad"

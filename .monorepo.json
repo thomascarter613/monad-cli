@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "kind": "MonadGovernanceMirror",
+  "canonicalManifest": "monad.toml",
+  "generatedBy": "layer-0001-systems-grade-monorepo-bootstrap.sh",
+  "workspace": {
+    "name": "monad",
+    "defaultScope": "@monad",
+    "packageManager": "bun",
+    "preset": "governed"
+  },
+  "governance": {
+    "directories": {
+      "governance": "governance",
+      "domains": "domains",
+      "policies": "policies",
+      "ops": "ops",
+      "observability": "observability",
+      "compliance": "compliance",
+      "security": "security",
+      "environments": "environments",
+      "meta": "meta"
+    },
+    "invariants": [
+      "monad.toml remains canonical",
+      "all mutating Monad commands are plan-backed",
+      "all mutating Monad commands support dry-run",
+      "all generated indexes are derived from canonical repo artifacts",
+      "work packets are canonical Markdown with parseable YAML front matter",
+      "domain boundaries are explicit and enforceable",
+      "engine versions are declared before use",
+      "drift detection is a first-class workflow",
+      "workspace.toml is a generated compatibility mirror; monad.toml remains canonical"
+    ]
+  },
+  "graphs": {
+    "projectGraph": "monad graph projects",
+    "taskGraph": "monad graph tasks",
+    "dependencyGraph": "monad graph deps"
+  },
+  "automation": {
+    "driftDetection": "scripts/drift-check.sh",
+    "graphIntegrity": "scripts/graph-integrity.sh",
+    "dependencyHygiene": "scripts/dependency-hygiene.sh",
+    "sbom": "scripts/sbom.sh",
+    "autofix": "scripts/autofix.sh",
+    "upstreamTracker": "scripts/upstream-track.sh"
+  },
+  "compatibilityManifests": [
+    "workspace.toml"
+  ]
+}

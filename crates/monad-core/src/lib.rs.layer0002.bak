@@ -1,0 +1,30 @@
+pub const CLI_NAME: &str = "monad";
+pub const MANIFEST_FILE: &str = "monad.toml";
+pub const LOCK_FILE: &str = "monad.lock";
+pub const STATE_DIR: &str = ".monad";
+pub const DEFAULT_PACKAGE_MANAGER: &str = "bun";
+pub const DEFAULT_SCOPE: &str = "@monad";
+pub const DEFAULT_INIT_PRESET: &str = "governed";
+
+pub fn version_banner() -> String {
+    format!(
+        "{CLI_NAME} {} (manifest: {MANIFEST_FILE}, scope: {DEFAULT_SCOPE})",
+        env!("CARGO_PKG_VERSION")
+    )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn defaults_are_locked() {
+        assert_eq!(CLI_NAME, "monad");
+        assert_eq!(MANIFEST_FILE, "monad.toml");
+        assert_eq!(LOCK_FILE, "monad.lock");
+        assert_eq!(STATE_DIR, ".monad");
+        assert_eq!(DEFAULT_PACKAGE_MANAGER, "bun");
+        assert_eq!(DEFAULT_SCOPE, "@monad");
+        assert_eq!(DEFAULT_INIT_PRESET, "governed");
+    }
+}

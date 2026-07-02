@@ -1,0 +1,57 @@
+schema_version = 1
+
+[[domains]]
+id = "cli"
+name = "CLI"
+paths = ["crates/monad-cli/**"]
+owner = "repo"
+public_surface = ["monad binary", "command help", "CLI JSON output"]
+
+[[domains]]
+id = "core"
+name = "Core"
+paths = ["crates/monad-core/**"]
+owner = "repo"
+public_surface = ["workspace model", "manifest schema", "selectors"]
+
+[[domains]]
+id = "plans"
+name = "Plans"
+paths = ["crates/monad-plans/**"]
+owner = "repo"
+public_surface = ["plan schema", "diff/apply behavior"]
+
+[[domains]]
+id = "packs"
+name = "Packs"
+paths = ["crates/monad-packs/**"]
+owner = "repo"
+public_surface = ["built-in packs", "templates"]
+
+[[domains]]
+id = "policy"
+name = "Policy"
+paths = ["crates/monad-policy/**", "policies/**", "governance/**"]
+owner = "repo"
+public_surface = ["policy checks", "waivers", "findings"]
+
+[[domains]]
+id = "context"
+name = "Context"
+paths = ["crates/monad-context/**", ".monad/context/**"]
+owner = "repo"
+public_surface = ["context packs", "handoffs"]
+
+[[domains]]
+id = "graph"
+name = "Graph"
+paths = ["crates/monad-graph/**", "docs/graphs/**"]
+owner = "repo"
+public_surface = ["project graph", "task graph", "dependency graph"]
+
+[[domains]]
+id = "operations"
+name = "Operations"
+paths = ["ops/**", "observability/**", "environments/**", "compose.yaml"]
+owner = "repo"
+public_surface = ["runbooks", "local infra", "environment contracts"]

@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    rust-fmt:
+      run: cargo fmt --all --check
+    rust-check:
+      run: cargo check --workspace

@@ -1,0 +1,33 @@
+# Work packet class taxonomy.
+# Markdown work packets remain canonical. This classification makes packet
+# categories explicit for humans, machines, and coding assistants.
+
+[[classes]]
+id = "initialization"
+title = "Initialization Packets"
+description = "Create repo, workspace, module, domain, and foundational artifacts."
+examples = ["WP-0000", "WP-0001", "WP-0002"]
+
+[[classes]]
+id = "evolution"
+title = "Evolution Packets"
+description = "Refactors, migrations, upgrades, behavior changes, and repo evolution."
+examples = ["WP-0003", "WP-0014"]
+
+[[classes]]
+id = "compliance"
+title = "Compliance Packets"
+description = "Audits, dependency hygiene, security scans, SBOM, policy enforcement."
+examples = ["WP-0013", "WP-0017"]
+
+[[classes]]
+id = "release"
+title = "Release Packets"
+description = "Versioning, changelog, release notes, release plans, release gates."
+examples = ["WP-0015", "WP-0031"]
+
+[[classes]]
+id = "governance"
+title = "Governance Packets"
+description = "Policies, lifecycle contracts, work packet standards, architecture records."
+examples = ["WP-0000"]

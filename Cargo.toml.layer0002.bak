@@ -1,0 +1,49 @@
+[workspace]
+members = [
+  "crates/monad-cli",
+  "crates/monad-core",
+  "crates/monad-plans",
+  "crates/monad-packs",
+  "crates/monad-policy",
+  "crates/monad-context",
+  "crates/monad-graph",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/monad/monad"
+rust-version = "1.75"
+version = "0.0.1"
+
+[workspace.dependencies]
+camino = "1"
+clap = { version = "4", features = ["derive", "env"] }
+directories = "5"
+fs-err = "3"
+globset = "0.4"
+ignore = "0.4"
+include_dir = "0.7"
+miette = { version = "7", features = ["fancy"] }
+minijinja = "2"
+owo-colors = "4"
+petgraph = "0.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+similar = "2"
+thiserror = "2"
+time = { version = "0.3", features = ["serde", "formatting"] }
+toml = "0.8"
+uuid = { version = "1", features = ["v4", "serde"] }
+walkdir = "2"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"
+nursery = "warn"
+unwrap_used = "warn"
+expect_used = "warn"

@@ -1,0 +1,19 @@
+name: Dependency Hygiene
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 10 * * 1"
+
+jobs:
+  dependency-hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Rust dependency metadata
+        run: cargo metadata --format-version 1
+      - name: Dependency hygiene script
+        run: bash scripts/dependency-hygiene.sh
