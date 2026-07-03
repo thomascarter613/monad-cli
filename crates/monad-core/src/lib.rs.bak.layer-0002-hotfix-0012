@@ -1,9 +1,9 @@
+pub mod command_catalog;
+
 //! Core domain primitives for the Monad monorepo operating-system runtime.
 //!
 //! WP-0001 keeps this crate intentionally small: stable constants and value
 //! types that other Monad crates can depend on without pulling in CLI concerns.
-
-pub mod command_catalog;
 
 pub const CLI_NAME: &str = "monad";
 pub const CANONICAL_MANIFEST: &str = "monad.toml";
