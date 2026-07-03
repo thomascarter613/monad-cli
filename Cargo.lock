@@ -108,8 +108,12 @@ name = "monad-cli"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "monad-context",
  "monad-core",
+ "monad-graph",
  "monad-packs",
+ "monad-plans",
+ "monad-policy",
  "serde",
  "serde_json",
 ]

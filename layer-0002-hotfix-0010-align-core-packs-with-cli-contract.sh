@@ -1,3 +1,69 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="${1:-.}"
+cd "$ROOT"
+
+if [ ! -f "monad.toml" ]; then
+  echo "ERROR: monad.toml not found. Run from repo root." >&2
+  exit 1
+fi
+
+CORE_RS="crates/monad-core/src/lib.rs"
+PACKS_RS="crates/monad-packs/src/lib.rs"
+
+if [ ! -f "$CORE_RS" ]; then
+  echo "ERROR: $CORE_RS not found." >&2
+  exit 1
+fi
+
+if [ ! -f "$PACKS_RS" ]; then
+  echo "ERROR: $PACKS_RS not found." >&2
+  exit 1
+fi
+
+cp "$CORE_RS" "$CORE_RS.bak.layer-0002-hotfix-0010"
+cp "$PACKS_RS" "$PACKS_RS.bak.layer-0002-hotfix-0010"
+
+python3 - <<'PY'
+from pathlib import Path
+import re
+
+core_path = Path("crates/monad-core/src/lib.rs")
+core = core_path.read_text()
+
+# The CLI's verbose version payload expects u32 schema versions, not strings.
+core = re.sub(
+    r'pub const MANIFEST_SCHEMA_VERSION:\s*&str\s*=\s*"([0-9]+)";',
+    r'pub const MANIFEST_SCHEMA_VERSION: u32 = \1;',
+    core,
+)
+core = re.sub(
+    r'pub const PLAN_SCHEMA_VERSION:\s*&str\s*=\s*"([0-9]+)";',
+    r'pub const PLAN_SCHEMA_VERSION: u32 = \1;',
+    core,
+)
+
+if "pub const MANIFEST_SCHEMA_VERSION" not in core:
+    insertion = 'pub const DEFAULT_INIT_PRESET: &str = "governed";'
+    if insertion not in core:
+        raise SystemExit("ERROR: could not find insertion point for MANIFEST_SCHEMA_VERSION")
+    core = core.replace(
+        insertion,
+        insertion + "\npub const MANIFEST_SCHEMA_VERSION: u32 = 1;\npub const PLAN_SCHEMA_VERSION: u32 = 1;",
+        1,
+    )
+
+if "pub const PLAN_SCHEMA_VERSION" not in core:
+    insertion = 'pub const MANIFEST_SCHEMA_VERSION: u32 = 1;'
+    if insertion not in core:
+        raise SystemExit("ERROR: could not find insertion point for PLAN_SCHEMA_VERSION")
+    core = core.replace(insertion, insertion + "\npub const PLAN_SCHEMA_VERSION: u32 = 1;", 1)
+
+core_path.write_text(core)
+PY
+
+cat > "$PACKS_RS" <<'RS'
 //! Pack primitives for Monad template and capability distribution.
 //!
 //! At WP-0001, packs are represented as a built-in catalog. Later work packets
@@ -161,3 +227,14 @@ mod tests {
         assert!(packs.iter().any(|pack| pack.provides("workpacket")));
     }
 }
+RS
+
+cargo fmt --all
+
+echo
+echo "Applied layer-0002-hotfix-0010-align-core-packs-with-cli-contract"
+echo
+echo "Aligned:"
+echo "  - monad_core::MANIFEST_SCHEMA_VERSION: u32"
+echo "  - monad_core::PLAN_SCHEMA_VERSION: u32"
+echo "  - monad_packs::PackManifest.kind"

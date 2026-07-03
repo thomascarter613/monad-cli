@@ -1,11 +1,12 @@
 [package]
 name = "monad-packs"
-version.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-license.workspace = true
-authors.workspace = true
-description = "Built-in pack metadata for Monad."
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+path = "src/lib.rs"
 
 [dependencies]
-serde.workspace = true
+serde = { version = "1", features = ["derive"] }

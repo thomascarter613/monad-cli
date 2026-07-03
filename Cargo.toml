@@ -1,15 +1,14 @@
 [workspace]
 members = [
-  "crates/monad-cli",
-  "crates/monad-core",
-  "crates/monad-plans",
-  "crates/monad-packs",
-  "crates/monad-policy",
-  "crates/monad-context",
-  "crates/monad-graph",
+    "crates/monad-cli",
+    "crates/monad-core",
+    "crates/monad-plans",
+    "crates/monad-packs",
+    "crates/monad-policy",
+    "crates/monad-context",
+    "crates/monad-graph",
 ]
 resolver = "2"
-
 [workspace.package]
 version = "0.1.0"
 edition = "2021"

@@ -17,3 +17,7 @@ monad-core = { path = "../monad-core" }
 monad-packs = { path = "../monad-packs" }
 serde.workspace = true
 serde_json.workspace = true
+monad-plans = { path = "../monad-plans" }
+monad-policy = { path = "../monad-policy" }
+monad-context = { path = "../monad-context" }
+monad-graph = { path = "../monad-graph" }

@@ -12,8 +12,9 @@ pub const DEFAULT_PACKAGE_MANAGER: &str = "bun";
 pub const DEFAULT_SCOPE: &str = "@monad";
 pub const DEFAULT_INIT_PRESET: &str = "governed";
 
-pub const MANIFEST_SCHEMA_VERSION: u32 = 1;
-pub const PLAN_SCHEMA_VERSION: u32 = 1;
+pub const MANIFEST_SCHEMA_VERSION: &str = "1";
+pub const PLAN_SCHEMA_VERSION: &str = "1";
+
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RuntimeDefaults {

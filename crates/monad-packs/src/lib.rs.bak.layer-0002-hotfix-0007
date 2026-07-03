@@ -30,7 +30,6 @@ impl fmt::Display for PackId {
 pub struct PackManifest {
     pub id: PackId,
     pub name: String,
-    pub kind: String,
     pub version: String,
     pub description: String,
     pub capabilities: Vec<String>,
@@ -41,16 +40,10 @@ impl PackManifest {
         Self {
             id: PackId::new(id),
             name: name.into(),
-            kind: "official".to_string(),
             version: version.into(),
             description: String::new(),
             capabilities: Vec::new(),
         }
-    }
-
-    pub fn with_kind(mut self, kind: impl Into<String>) -> Self {
-        self.kind = kind.into();
-        self
     }
 
     pub fn with_description(mut self, description: impl Into<String>) -> Self {
@@ -76,7 +69,6 @@ impl PackManifest {
 pub fn builtin_packs() -> Vec<PackManifest> {
     vec![
         PackManifest::new("official.typescript", "Official TypeScript", "0.1.0")
-            .with_kind("language")
             .with_description("TypeScript, Bun, app, package, and service workspace defaults")
             .with_capability("typescript")
             .with_capability("javascript")
@@ -84,40 +76,34 @@ pub fn builtin_packs() -> Vec<PackManifest> {
             .with_capability("package")
             .with_capability("service"),
         PackManifest::new("official.rust", "Official Rust", "0.1.0")
-            .with_kind("language")
             .with_description("Rust crate and workspace defaults")
             .with_capability("rust")
             .with_capability("crate")
             .with_capability("cli")
             .with_capability("library"),
         PackManifest::new("official.go", "Official Go", "0.1.0")
-            .with_kind("language")
             .with_description("Go service, module, and tool defaults")
             .with_capability("go")
             .with_capability("service")
             .with_capability("module"),
         PackManifest::new("official.python", "Official Python", "0.1.0")
-            .with_kind("language")
             .with_description("Python service, package, automation, and AI/RAG defaults")
             .with_capability("python")
             .with_capability("service")
             .with_capability("package")
             .with_capability("ai"),
         PackManifest::new("official.java", "Official Java", "0.1.0")
-            .with_kind("language")
             .with_description("Java service, library, and enterprise connector defaults")
             .with_capability("java")
             .with_capability("service")
             .with_capability("library")
             .with_capability("connector"),
         PackManifest::new("official.policy", "Official Policy", "0.1.0")
-            .with_kind("governance")
             .with_description("Governance, policy-as-code, waiver, and compliance defaults")
             .with_capability("policy")
             .with_capability("governance")
             .with_capability("compliance"),
         PackManifest::new("official.docs", "Official Docs", "0.1.0")
-            .with_kind("governance")
             .with_description("Documentation, ADR, work packet, and handoff defaults")
             .with_capability("docs")
             .with_capability("adr")
@@ -131,16 +117,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn pack_manifest_tracks_kind_and_capabilities() {
+    fn pack_manifest_tracks_capabilities() {
         let pack = PackManifest::new("official.typescript", "Official TypeScript", "0.1.0")
-            .with_kind("language")
             .with_description("TypeScript defaults")
             .with_capability("app")
             .with_capability("package");
 
         assert_eq!(pack.id.as_str(), "official.typescript");
         assert_eq!(pack.id.to_string(), "official.typescript");
-        assert_eq!(pack.kind, "language");
         assert!(pack.provides("app"));
         assert!(pack.provides("package"));
         assert!(!pack.provides("database"));
@@ -157,7 +141,6 @@ mod tests {
         assert!(ids.contains(&"official.typescript"));
         assert!(ids.contains(&"official.rust"));
         assert!(ids.contains(&"official.policy"));
-        assert!(packs.iter().any(|pack| pack.kind == "governance"));
         assert!(packs.iter().any(|pack| pack.provides("workpacket")));
     }
 }
