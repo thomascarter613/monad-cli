@@ -13,5 +13,5 @@ fn binary_runs() {
 
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(stdout.contains("monad"));
-    assert!(stdout.contains("@monad"));
+    assert!(stdout.contains("Default scope: @monad"));
 }
