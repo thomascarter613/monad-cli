@@ -1,12 +1,12 @@
 [package]
 name = "monad-plans"
-version.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-license.workspace = true
-authors.workspace = true
-description = "Plan, diff, and apply primitives for Monad."
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+path = "src/lib.rs"
 
 [dependencies]
-monad-core = { path = "../monad-core" }
-serde.workspace = true
+serde = { version = "1", features = ["derive"] }

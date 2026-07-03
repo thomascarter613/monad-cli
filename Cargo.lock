@@ -151,7 +151,6 @@ dependencies = [
 name = "monad-plans"
 version = "0.1.0"
 dependencies = [
- "monad-core",
  "serde",
 ]
 

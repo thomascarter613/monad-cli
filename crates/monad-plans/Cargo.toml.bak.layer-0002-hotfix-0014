@@ -1,0 +1,12 @@
+[package]
+name = "monad-plans"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Plan, diff, and apply primitives for Monad."
+
+[dependencies]
+monad-core = { path = "../monad-core" }
+serde.workspace = true
