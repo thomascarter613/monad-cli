@@ -30,8 +30,7 @@ fn run() -> Result<(), String> {
         Some(("version", sub)) => emit_version(sub, json),
         Some(("pack", sub)) if matches_subcommand(sub, "list") => emit_pack_list(json),
         Some((command, sub)) => {
-            let path = command_path(command, sub);
-            emit_placeholder(json, &path)
+            emit_placeholder(json, command_path(command, sub), mutates(command))
         }
         None => Ok(()),
     }
@@ -762,47 +761,23 @@ struct CommandOutcome {
     plan_backed: bool,
 }
 
-#[derive(Debug, Serialize)]
-struct PlaceholderOutput {
-    command: String,
-    status: &'static str,
-    implemented: bool,
-    mutating: bool,
-    plan_backed: bool,
-    supports_dry_run: bool,
-    message: String,
-    next: String,
-}
-
-fn emit_placeholder(json: bool, path: &str) -> Result<(), String> {
-    let output = PlaceholderOutput {
-        command: path.to_string(),
+fn emit_placeholder(json: bool, command: String, mutates_files: bool) -> Result<(), String> {
+    let outcome = CommandOutcome {
+        ok: true,
+        command: command.clone(),
         status: "placeholder",
-        implemented: false,
-        mutating: monad_core::command_catalog::is_mutating_command(path),
-        plan_backed: monad_core::command_catalog::is_plan_backed(path),
-        supports_dry_run: monad_core::command_catalog::supports_dry_run(path),
-        message: format!(
-            "`monad {path}` is part of the approved WP-0001 command surface, but its full behavior is not implemented yet."
-        ),
-        next: "Future work packets will replace this placeholder with plan-backed command behavior, validation, and real repository changes.".to_string(),
+        message: format!("{command} is present in the WP-0001 CLI skeleton; behavior arrives in later work packets."),
+        mutates_files,
+        plan_backed: mutates_files,
     };
 
     if json {
         println!(
             "{}",
-            serde_json::to_string_pretty(&output).map_err(|error| error.to_string())?
+            serde_json::to_string_pretty(&outcome).map_err(|error| error.to_string())?
         );
     } else {
-        println!("command: {}", output.command);
-        println!("status: {}", output.status);
-        println!("implemented: {}", output.implemented);
-        println!("mutating: {}", output.mutating);
-        println!("plan-backed: {}", output.plan_backed);
-        println!("supports --dry-run: {}", output.supports_dry_run);
-        println!();
-        println!("{}", output.message);
-        println!("{}", output.next);
+        println!("{}", outcome.message);
     }
 
     Ok(())

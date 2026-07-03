@@ -164,6 +164,23 @@ pub fn supports_dry_run(path: &str) -> bool {
         .unwrap_or(false)
 }
 
+pub fn is_mutating_command(path: &str) -> bool {
+    command_spec(path)
+        .map(|command| {
+            command.plan_backed
+                && matches!(
+                    command.kind,
+                    CommandKind::Mutating
+                        | CommandKind::Planning
+                        | CommandKind::Governance
+                        | CommandKind::Documentation
+                        | CommandKind::Release
+                        | CommandKind::Extension
+                )
+        })
+        .unwrap_or(false)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -237,6 +254,16 @@ mod tests {
             assert!(is_plan_backed(path), "`{path}` should be plan-backed");
             assert!(supports_dry_run(path), "`{path}` should support --dry-run");
         }
+    }
+
+    #[test]
+    fn placeholder_metadata_matches_command_contract() {
+        assert!(is_mutating_command("add"));
+        assert!(is_mutating_command("policy waive"));
+        assert!(is_mutating_command("workpacket plan"));
+        assert!(!is_mutating_command("list"));
+        assert!(!is_mutating_command("policy check"));
+        assert!(!is_mutating_command("docs check"));
     }
 
     #[test]
