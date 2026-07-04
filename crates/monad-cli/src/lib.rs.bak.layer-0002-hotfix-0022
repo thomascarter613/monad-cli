@@ -492,55 +492,8 @@ fn context_handoff_cmd() -> Command {
 
 fn config_cmd() -> Command {
     Command::new("config")
-        .about("Inspect and manage Monad configuration")
+        .about("Show approved Monad defaults, schema versions, manifest paths, and runtime configuration")
         .arg(fmt_arg().value_parser(["text", "json", "markdown"]))
-        .subcommand(
-            Command::new("list")
-                .about("List effective Monad configuration values")
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("get")
-                .about("Get an effective Monad configuration value")
-                .arg(arg("key", "Configuration key to read").required(false))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("set")
-                .about("Plan a Monad configuration value change")
-                .arg(arg("key", "Configuration key to set").required(true))
-                .arg(arg("value", "Configuration value to set").required(true))
-                .arg(flag(
-                    "dry-run",
-                    "Preview the configuration change without writing",
-                ))
-                .arg(flag(
-                    "yes",
-                    "Skip safe confirmations when mutation is implemented",
-                ))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("unset")
-                .about("Plan removal of a Monad configuration value")
-                .arg(arg("key", "Configuration key to unset").required(true))
-                .arg(flag(
-                    "dry-run",
-                    "Preview the configuration change without writing",
-                ))
-                .arg(flag(
-                    "yes",
-                    "Skip safe confirmations when mutation is implemented",
-                ))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("validate")
-                .about("Validate effective Monad configuration without mutating")
-                .arg(arg("target", "Target repository path").required(false))
-                .arg(flag("strict", "Treat warnings as failures"))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
 }
 
 fn scope_flags() -> Arg {
@@ -828,6 +781,209 @@ struct CommandOutcome {
     message: String,
     mutates_files: bool,
     plan_backed: bool,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct ConfigEntry {
+    key: String,
+    value: String,
+    source: &'static str,
+    description: String,
+}
+
+#[derive(Debug, Serialize)]
+struct ConfigCommandOutput {
+    schema_version: u32,
+    command: &'static str,
+    status: &'static str,
+    did_mutate: bool,
+    entry_count: usize,
+    entries: Vec<ConfigEntry>,
+    notes: Vec<String>,
+}
+
+fn emit_config(matches: &ArgMatches, json: bool) -> Result<(), String> {
+    let format = matches
+        .get_one::<String>("format")
+        .map(String::as_str)
+        .unwrap_or("text");
+
+    let output = build_config_output();
+    let rendered = render_config_output(&output, if json { "json" } else { format })?;
+
+    println!("{rendered}");
+
+    Ok(())
+}
+
+fn build_config_output() -> ConfigCommandOutput {
+    let defaults = monad_core::RuntimeDefaults::monad();
+
+    let entries = vec![
+        ConfigEntry {
+            key: "cli.name".to_string(),
+            value: defaults.cli_name.to_string(),
+            source: "approved-default",
+            description: "Canonical CLI binary name.".to_string(),
+        },
+        ConfigEntry {
+            key: "manifest.canonical".to_string(),
+            value: defaults.canonical_manifest.to_string(),
+            source: "approved-default",
+            description: "Canonical Monad source-of-truth manifest.".to_string(),
+        },
+        ConfigEntry {
+            key: "manifest.compatibility".to_string(),
+            value: defaults.compatibility_manifest.to_string(),
+            source: "approved-default",
+            description: "Generated compatibility mirror of monad.toml.".to_string(),
+        },
+        ConfigEntry {
+            key: "lockfile".to_string(),
+            value: defaults.lockfile.to_string(),
+            source: "approved-default",
+            description: "Monad lockfile path.".to_string(),
+        },
+        ConfigEntry {
+            key: "state.dir".to_string(),
+            value: defaults.state_dir.to_string(),
+            source: "approved-default",
+            description: "Monad local state directory.".to_string(),
+        },
+        ConfigEntry {
+            key: "package_manager.default".to_string(),
+            value: defaults.package_manager.to_string(),
+            source: "approved-default",
+            description: "Default package manager for generated JavaScript/TypeScript surfaces."
+                .to_string(),
+        },
+        ConfigEntry {
+            key: "scope.default".to_string(),
+            value: defaults.scope.to_string(),
+            source: "approved-default",
+            description: "Default package scope for generated package names.".to_string(),
+        },
+        ConfigEntry {
+            key: "init.preset.default".to_string(),
+            value: defaults.init_preset.to_string(),
+            source: "approved-default",
+            description: "Default init preset.".to_string(),
+        },
+        ConfigEntry {
+            key: "schema.manifest.version".to_string(),
+            value: monad_core::MANIFEST_SCHEMA_VERSION.to_string(),
+            source: "monad-core",
+            description: "Manifest schema version exposed by monad-core.".to_string(),
+        },
+        ConfigEntry {
+            key: "schema.plan.version".to_string(),
+            value: monad_core::PLAN_SCHEMA_VERSION.to_string(),
+            source: "monad-core",
+            description: "Plan schema version exposed by monad-core.".to_string(),
+        },
+        ConfigEntry {
+            key: "behavior.mutating_commands.plan_backed".to_string(),
+            value: "true".to_string(),
+            source: "approved-behavior",
+            description: "Mutating commands are expected to be plan-backed.".to_string(),
+        },
+        ConfigEntry {
+            key: "behavior.mutating_commands.dry_run".to_string(),
+            value: "true".to_string(),
+            source: "approved-behavior",
+            description: "Mutating commands should support --dry-run when safe.".to_string(),
+        },
+        ConfigEntry {
+            key: "behavior.ai.optional".to_string(),
+            value: "true".to_string(),
+            source: "approved-behavior",
+            description: "Monad is AI-ready but AI-optional.".to_string(),
+        },
+        ConfigEntry {
+            key: "behavior.local_first".to_string(),
+            value: "true".to_string(),
+            source: "approved-behavior",
+            description: "Monad is local-first and single-binary oriented.".to_string(),
+        },
+    ];
+
+    ConfigCommandOutput {
+        schema_version: monad_core::MANIFEST_SCHEMA_VERSION,
+        command: "config",
+        status: "implemented",
+        did_mutate: false,
+        entry_count: entries.len(),
+        entries,
+        notes: vec![
+            "`monad config` is read-only in WP-0001 and reports approved defaults rather than editing configuration.".to_string(),
+            "monad.toml remains canonical; workspace.toml is only a generated compatibility mirror.".to_string(),
+            "Future work packets can add config get/set, validation, layered config sources, and environment overrides.".to_string(),
+        ],
+    }
+}
+
+fn render_config_output(output: &ConfigCommandOutput, format: &str) -> Result<String, String> {
+    match format {
+        "json" => serde_json::to_string_pretty(output).map_err(|error| error.to_string()),
+        "markdown" => Ok(render_config_markdown(output)),
+        "text" => Ok(render_config_text(output)),
+        other => Err(format!("unsupported config output format `{other}`")),
+    }
+}
+
+fn render_config_text(output: &ConfigCommandOutput) -> String {
+    let mut rendered = String::new();
+
+    rendered.push_str("Monad Config\n");
+    rendered.push_str("============\n\n");
+    rendered.push_str(&format!("status: {}\n", output.status));
+    rendered.push_str(&format!("did mutate: {}\n", output.did_mutate));
+    rendered.push_str(&format!("entries: {}\n", output.entry_count));
+    rendered.push_str("\nvalues:\n");
+
+    for entry in &output.entries {
+        rendered.push_str(&format!(
+            "  - {} = {} ({}) — {}\n",
+            entry.key, entry.value, entry.source, entry.description
+        ));
+    }
+
+    rendered.push_str("\nnotes:\n");
+    for note in &output.notes {
+        rendered.push_str(&format!("  - {note}\n"));
+    }
+
+    rendered
+}
+
+fn render_config_markdown(output: &ConfigCommandOutput) -> String {
+    let mut rendered = String::new();
+
+    rendered.push_str("# Monad Config\n\n");
+    rendered.push_str(&format!("- **Status:** `{}`\n", output.status));
+    rendered.push_str(&format!("- **Did mutate:** `{}`\n", output.did_mutate));
+    rendered.push_str(&format!("- **Entries:** `{}`\n\n", output.entry_count));
+
+    rendered.push_str("## Values\n\n");
+    rendered.push_str("| Key | Value | Source | Description |\n");
+    rendered.push_str("|---|---|---|---|\n");
+
+    for entry in &output.entries {
+        rendered.push_str(&format!(
+            "| `{}` | `{}` | `{}` | {} |\n",
+            entry.key,
+            entry.value,
+            entry.source,
+            entry.description.replace('|', "\\|")
+        ));
+    }
+
+    rendered.push_str("\n## Notes\n\n");
+    for note in &output.notes {
+        rendered.push_str(&format!("- {note}\n"));
+    }
+
+    rendered
 }
 
 #[derive(Debug, Clone, Serialize)]

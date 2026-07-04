@@ -520,27 +520,6 @@ fn config_cmd() -> Command {
                 ))
                 .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
         )
-        .subcommand(
-            Command::new("unset")
-                .about("Plan removal of a Monad configuration value")
-                .arg(arg("key", "Configuration key to unset").required(true))
-                .arg(flag(
-                    "dry-run",
-                    "Preview the configuration change without writing",
-                ))
-                .arg(flag(
-                    "yes",
-                    "Skip safe confirmations when mutation is implemented",
-                ))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("validate")
-                .about("Validate effective Monad configuration without mutating")
-                .arg(arg("target", "Target repository path").required(false))
-                .arg(flag("strict", "Treat warnings as failures"))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
 }
 
 fn scope_flags() -> Arg {

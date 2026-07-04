@@ -534,13 +534,6 @@ fn config_cmd() -> Command {
                 ))
                 .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
         )
-        .subcommand(
-            Command::new("validate")
-                .about("Validate effective Monad configuration without mutating")
-                .arg(arg("target", "Target repository path").required(false))
-                .arg(flag("strict", "Treat warnings as failures"))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
 }
 
 fn scope_flags() -> Arg {

@@ -20,17 +20,17 @@ fn placeholder_text_output_reports_plan_metadata_for_add() {
 }
 
 #[test]
-fn placeholder_text_output_reports_read_only_metadata_for_diff() {
+fn placeholder_text_output_reports_read_only_metadata_for_inspect() {
     let output = Command::new(env!("CARGO_BIN_EXE_monad"))
-        .arg("diff")
+        .arg("inspect")
         .output()
-        .expect("monad diff placeholder should run");
+        .expect("monad inspect placeholder should run");
 
     assert!(output.status.success());
 
     let stdout = String::from_utf8_lossy(&output.stdout);
 
-    assert!(stdout.contains("command: diff"));
+    assert!(stdout.contains("command: inspect"));
     assert!(stdout.contains("status: placeholder"));
     assert!(stdout.contains("implemented: false"));
     assert!(stdout.contains("mutating: false"));

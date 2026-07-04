@@ -492,55 +492,8 @@ fn context_handoff_cmd() -> Command {
 
 fn config_cmd() -> Command {
     Command::new("config")
-        .about("Inspect and manage Monad configuration")
+        .about("Show approved Monad defaults, schema versions, manifest paths, and runtime configuration")
         .arg(fmt_arg().value_parser(["text", "json", "markdown"]))
-        .subcommand(
-            Command::new("list")
-                .about("List effective Monad configuration values")
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("get")
-                .about("Get an effective Monad configuration value")
-                .arg(arg("key", "Configuration key to read").required(false))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("set")
-                .about("Plan a Monad configuration value change")
-                .arg(arg("key", "Configuration key to set").required(true))
-                .arg(arg("value", "Configuration value to set").required(true))
-                .arg(flag(
-                    "dry-run",
-                    "Preview the configuration change without writing",
-                ))
-                .arg(flag(
-                    "yes",
-                    "Skip safe confirmations when mutation is implemented",
-                ))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("unset")
-                .about("Plan removal of a Monad configuration value")
-                .arg(arg("key", "Configuration key to unset").required(true))
-                .arg(flag(
-                    "dry-run",
-                    "Preview the configuration change without writing",
-                ))
-                .arg(flag(
-                    "yes",
-                    "Skip safe confirmations when mutation is implemented",
-                ))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
-        .subcommand(
-            Command::new("validate")
-                .about("Validate effective Monad configuration without mutating")
-                .arg(arg("target", "Target repository path").required(false))
-                .arg(flag("strict", "Treat warnings as failures"))
-                .arg(fmt_arg().value_parser(["text", "json", "markdown"])),
-        )
 }
 
 fn scope_flags() -> Arg {

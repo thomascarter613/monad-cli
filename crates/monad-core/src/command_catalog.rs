@@ -108,6 +108,11 @@ pub const APPROVED_NAMESPACED_COMMANDS: &[CommandSpec] = &[
     CommandSpec::new("workpacket new", CommandKind::Planning, true, true),
     CommandSpec::new("workpacket list", CommandKind::Planning, false, false),
     CommandSpec::new("workpacket plan", CommandKind::Planning, true, true),
+    CommandSpec::new("config list", CommandKind::ReadOnly, false, false),
+    CommandSpec::new("config validate", CommandKind::ReadOnly, false, false),
+    CommandSpec::new("config get", CommandKind::ReadOnly, false, false),
+    CommandSpec::new("config set", CommandKind::Mutating, true, true),
+    CommandSpec::new("config unset", CommandKind::Mutating, true, true),
 ];
 
 pub fn approved_top_level_command_paths() -> Vec<&'static str> {
