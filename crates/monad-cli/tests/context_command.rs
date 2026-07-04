@@ -31,7 +31,14 @@ fn context_pack_outputs_text_inventory() {
 fn context_pack_outputs_json_inventory() {
     let output = Command::new(env!("CARGO_BIN_EXE_monad"))
         .current_dir(workspace_root())
-        .args(["context", "pack", "--include", "manifests", "--format", "json"])
+        .args([
+            "context",
+            "pack",
+            "--include",
+            "manifests",
+            "--format",
+            "json",
+        ])
         .output()
         .expect("monad context pack --format json should run");
 
@@ -58,7 +65,7 @@ fn context_verify_passes_for_workspace() {
 
     let stdout = String::from_utf8_lossy(&output.stdout);
 
-    assert!(stdout.contains("Monad Context Verify");
+    assert!(stdout.contains("Monad Context Verify"));
     assert!(stdout.contains("status: passed"));
     assert!(stdout.contains("did mutate: false"));
     assert!(stdout.contains("MONAD_CONTEXT_CANONICAL_MANIFEST"));

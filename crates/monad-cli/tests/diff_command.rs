@@ -9,7 +9,10 @@ fn temp_dir(name: &str) -> std::path::PathBuf {
         .as_nanos();
 
     let mut path = std::env::temp_dir();
-    path.push(format!("monad-diff-test-{}-{nanos}-{name}", std::process::id()));
+    path.push(format!(
+        "monad-diff-test-{}-{nanos}-{name}",
+        std::process::id()
+    ));
     fs::create_dir_all(&path).expect("should create temp dir");
     path
 }

@@ -91,7 +91,14 @@ fn docs_generate_outputs_markdown_preview() {
 fn docs_generate_outputs_json_preview() {
     let output = Command::new(env!("CARGO_BIN_EXE_monad"))
         .current_dir(workspace_root())
-        .args(["docs", "generate", "--section", "workspace", "--format", "json"])
+        .args([
+            "docs",
+            "generate",
+            "--section",
+            "workspace",
+            "--format",
+            "json",
+        ])
         .output()
         .expect("monad docs generate --format json should run");
 

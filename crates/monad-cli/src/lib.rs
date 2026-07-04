@@ -832,9 +832,6 @@ struct CommandOutcome {
     plan_backed: bool,
 }
 
-
-
-
 #[derive(Debug, Clone, Serialize)]
 struct DocsFinding {
     severity: &'static str,
@@ -989,9 +986,17 @@ fn build_docs_check_output(strict: bool) -> DocsCheckOutput {
 
     for (path, code, purpose) in [
         ("README.md", "MONAD_DOCS_README", "repository README"),
-        ("AGENTS.md", "MONAD_DOCS_AGENTS", "agent/operator instructions"),
+        (
+            "AGENTS.md",
+            "MONAD_DOCS_AGENTS",
+            "agent/operator instructions",
+        ),
         ("docs", "MONAD_DOCS_DIR", "documentation directory"),
-        ("docs/work-packets", "MONAD_DOCS_WORKPACKETS_DIR", "work packet documentation directory"),
+        (
+            "docs/work-packets",
+            "MONAD_DOCS_WORKPACKETS_DIR",
+            "work packet documentation directory",
+        ),
     ] {
         let exists = docs_path_exists(&root, path);
 
@@ -1008,10 +1013,26 @@ fn build_docs_check_output(strict: bool) -> DocsCheckOutput {
     }
 
     for (path, code, purpose) in [
-        ("monad.toml", "MONAD_DOCS_CANONICAL_MANIFEST", "canonical manifest"),
-        ("Cargo.toml", "MONAD_DOCS_CARGO_WORKSPACE", "Cargo workspace manifest"),
-        ("crates/monad-core/src/command_catalog.rs", "MONAD_DOCS_COMMAND_CATALOG", "command catalog source"),
-        ("crates/monad-cli/src/lib.rs", "MONAD_DOCS_CLI_SOURCE", "CLI source"),
+        (
+            "monad.toml",
+            "MONAD_DOCS_CANONICAL_MANIFEST",
+            "canonical manifest",
+        ),
+        (
+            "Cargo.toml",
+            "MONAD_DOCS_CARGO_WORKSPACE",
+            "Cargo workspace manifest",
+        ),
+        (
+            "crates/monad-core/src/command_catalog.rs",
+            "MONAD_DOCS_COMMAND_CATALOG",
+            "command catalog source",
+        ),
+        (
+            "crates/monad-cli/src/lib.rs",
+            "MONAD_DOCS_CLI_SOURCE",
+            "CLI source",
+        ),
     ] {
         let exists = docs_file_exists(&root, path);
 
@@ -1028,7 +1049,11 @@ fn build_docs_check_output(strict: bool) -> DocsCheckOutput {
     }
 
     for (path, code, purpose) in [
-        ("governance", "MONAD_DOCS_GOVERNANCE_SURFACE", "governance surface"),
+        (
+            "governance",
+            "MONAD_DOCS_GOVERNANCE_SURFACE",
+            "governance surface",
+        ),
         ("schemas", "MONAD_DOCS_SCHEMA_SURFACE", "schema surface"),
         ("policies", "MONAD_DOCS_POLICY_SURFACE", "policy surface"),
     ] {
@@ -1158,7 +1183,10 @@ fn render_docs_check_output(output: &DocsCheckOutput, format: &str) -> Result<St
     }
 }
 
-fn render_docs_generate_output(output: &DocsGenerateOutput, format: &str) -> Result<String, String> {
+fn render_docs_generate_output(
+    output: &DocsGenerateOutput,
+    format: &str,
+) -> Result<String, String> {
     match format {
         "json" => serde_json::to_string_pretty(output).map_err(|error| error.to_string()),
         "markdown" => Ok(render_docs_generate_markdown(output)),
@@ -1274,7 +1302,6 @@ fn render_docs_generate_markdown(output: &DocsGenerateOutput) -> String {
 
     rendered
 }
-
 
 #[derive(Debug, Clone, Serialize)]
 struct ContextFileEntry {
@@ -1427,7 +1454,9 @@ fn emit_context_handoff(matches: &ArgMatches, json: bool) -> Result<(), String> 
     let summary = matches
         .get_one::<String>("summary")
         .cloned()
-        .unwrap_or_else(|| "Continue Monad CLI WP-0001 Rust workspace and CLI skeleton implementation.".to_string());
+        .unwrap_or_else(|| {
+            "Continue Monad CLI WP-0001 Rust workspace and CLI skeleton implementation.".to_string()
+        });
 
     let format = matches
         .get_one::<String>("format")
@@ -1478,25 +1507,95 @@ fn context_file(
 fn context_candidate_files(root: &std::path::Path) -> Vec<ContextFileEntry> {
     let mut files = vec![
         context_file(root, "manifests", "monad.toml", "canonical Monad manifest"),
-        context_file(root, "manifests", "workspace.toml", "compatibility mirror manifest"),
+        context_file(
+            root,
+            "manifests",
+            "workspace.toml",
+            "compatibility mirror manifest",
+        ),
         context_file(root, "manifests", "monad.lock", "Monad lockfile"),
         context_file(root, "manifests", "Cargo.toml", "Cargo workspace manifest"),
         context_file(root, "manifests", "deny.toml", "cargo-deny configuration"),
-        context_file(root, "cli", "crates/monad-cli/Cargo.toml", "CLI crate manifest"),
-        context_file(root, "cli", "crates/monad-cli/src/lib.rs", "CLI implementation"),
-        context_file(root, "cli", "crates/monad-cli/src/main.rs", "CLI binary entrypoint"),
-        context_file(root, "cli", "crates/monad-cli/tests/smoke.rs", "CLI smoke test"),
-        context_file(root, "crates", "crates/monad-core/src/lib.rs", "core runtime defaults"),
-        context_file(root, "crates", "crates/monad-core/src/command_catalog.rs", "approved command catalog"),
-        context_file(root, "crates", "crates/monad-plans/src/lib.rs", "plan primitives"),
-        context_file(root, "crates", "crates/monad-packs/src/lib.rs", "pack catalog primitives"),
-        context_file(root, "crates", "crates/monad-policy/src/lib.rs", "policy primitives"),
-        context_file(root, "crates", "crates/monad-context/src/lib.rs", "context primitives"),
-        context_file(root, "crates", "crates/monad-graph/src/lib.rs", "graph primitives"),
+        context_file(
+            root,
+            "cli",
+            "crates/monad-cli/Cargo.toml",
+            "CLI crate manifest",
+        ),
+        context_file(
+            root,
+            "cli",
+            "crates/monad-cli/src/lib.rs",
+            "CLI implementation",
+        ),
+        context_file(
+            root,
+            "cli",
+            "crates/monad-cli/src/main.rs",
+            "CLI binary entrypoint",
+        ),
+        context_file(
+            root,
+            "cli",
+            "crates/monad-cli/tests/smoke.rs",
+            "CLI smoke test",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-core/src/lib.rs",
+            "core runtime defaults",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-core/src/command_catalog.rs",
+            "approved command catalog",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-plans/src/lib.rs",
+            "plan primitives",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-packs/src/lib.rs",
+            "pack catalog primitives",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-policy/src/lib.rs",
+            "policy primitives",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-context/src/lib.rs",
+            "context primitives",
+        ),
+        context_file(
+            root,
+            "crates",
+            "crates/monad-graph/src/lib.rs",
+            "graph primitives",
+        ),
         context_file(root, "docs", "README.md", "repository README"),
         context_file(root, "docs", "AGENTS.md", "agent/operator instructions"),
-        context_file(root, "governance", "governance/README.md", "governance surface entrypoint"),
-        context_file(root, "governance", "docs/work-packets/WP-0001.md", "current WP-0001 work packet, if present"),
+        context_file(
+            root,
+            "governance",
+            "governance/README.md",
+            "governance surface entrypoint",
+        ),
+        context_file(
+            root,
+            "governance",
+            "docs/work-packets/WP-0001.md",
+            "current WP-0001 work packet, if present",
+        ),
     ];
 
     files.sort_by(|left, right| {
@@ -1559,11 +1658,31 @@ fn build_context_verify_output(root: &std::path::Path, strict: bool) -> ContextV
     let mut findings = Vec::new();
 
     for required in [
-        ("monad.toml", "MONAD_CONTEXT_CANONICAL_MANIFEST", "canonical Monad manifest"),
-        ("workspace.toml", "MONAD_CONTEXT_COMPATIBILITY_MANIFEST", "compatibility manifest mirror"),
-        ("Cargo.toml", "MONAD_CONTEXT_CARGO_WORKSPACE", "Cargo workspace manifest"),
-        ("crates/monad-cli/src/lib.rs", "MONAD_CONTEXT_CLI_LIB", "CLI library implementation"),
-        ("crates/monad-core/src/command_catalog.rs", "MONAD_CONTEXT_COMMAND_CATALOG", "approved command catalog"),
+        (
+            "monad.toml",
+            "MONAD_CONTEXT_CANONICAL_MANIFEST",
+            "canonical Monad manifest",
+        ),
+        (
+            "workspace.toml",
+            "MONAD_CONTEXT_COMPATIBILITY_MANIFEST",
+            "compatibility manifest mirror",
+        ),
+        (
+            "Cargo.toml",
+            "MONAD_CONTEXT_CARGO_WORKSPACE",
+            "Cargo workspace manifest",
+        ),
+        (
+            "crates/monad-cli/src/lib.rs",
+            "MONAD_CONTEXT_CLI_LIB",
+            "CLI library implementation",
+        ),
+        (
+            "crates/monad-core/src/command_catalog.rs",
+            "MONAD_CONTEXT_COMMAND_CATALOG",
+            "approved command catalog",
+        ),
     ] {
         let exists = root.join(required.0).is_file();
 
@@ -1572,18 +1691,32 @@ fn build_context_verify_output(root: &std::path::Path, strict: bool) -> ContextV
             code: required.1,
             path: required.0.to_string(),
             message: if exists {
-                format!("required context file `{}` exists ({})", required.0, required.2)
+                format!(
+                    "required context file `{}` exists ({})",
+                    required.0, required.2
+                )
             } else {
-                format!("required context file `{}` is missing ({})", required.0, required.2)
+                format!(
+                    "required context file `{}` is missing ({})",
+                    required.0, required.2
+                )
             },
         });
     }
 
     for recommended in [
         ("README.md", "MONAD_CONTEXT_README", "repository README"),
-        ("AGENTS.md", "MONAD_CONTEXT_AGENTS", "agent/operator instructions"),
+        (
+            "AGENTS.md",
+            "MONAD_CONTEXT_AGENTS",
+            "agent/operator instructions",
+        ),
         ("docs", "MONAD_CONTEXT_DOCS_DIR", "documentation directory"),
-        ("governance", "MONAD_CONTEXT_GOVERNANCE_DIR", "governance directory"),
+        (
+            "governance",
+            "MONAD_CONTEXT_GOVERNANCE_DIR",
+            "governance directory",
+        ),
     ] {
         let exists = root.join(recommended.0).exists();
 
@@ -1592,9 +1725,15 @@ fn build_context_verify_output(root: &std::path::Path, strict: bool) -> ContextV
             code: recommended.1,
             path: recommended.0.to_string(),
             message: if exists {
-                format!("recommended context path `{}` exists ({})", recommended.0, recommended.2)
+                format!(
+                    "recommended context path `{}` exists ({})",
+                    recommended.0, recommended.2
+                )
             } else {
-                format!("recommended context path `{}` is missing ({})", recommended.0, recommended.2)
+                format!(
+                    "recommended context path `{}` is missing ({})",
+                    recommended.0, recommended.2
+                )
             },
         });
     }
@@ -1660,7 +1799,10 @@ fn build_context_handoff_output(
 
     let commands = monad_core::command_catalog::approved_commands();
     let command_surface_total = commands.len();
-    let command_surface_plan_backed = commands.iter().filter(|command| command.plan_backed).count();
+    let command_surface_plan_backed = commands
+        .iter()
+        .filter(|command| command.plan_backed)
+        .count();
 
     ContextHandoffOutput {
         schema_version: monad_core::MANIFEST_SCHEMA_VERSION,
@@ -1709,21 +1851,31 @@ fn render_context_pack_output(output: &ContextPackOutput, format: &str) -> Resul
     }
 }
 
-fn render_context_verify_output(output: &ContextVerifyOutput, format: &str) -> Result<String, String> {
+fn render_context_verify_output(
+    output: &ContextVerifyOutput,
+    format: &str,
+) -> Result<String, String> {
     match format {
         "json" => serde_json::to_string_pretty(output).map_err(|error| error.to_string()),
         "markdown" => Ok(render_context_verify_markdown(output)),
         "text" => Ok(render_context_verify_text(output)),
-        other => Err(format!("unsupported context verify output format `{other}`")),
+        other => Err(format!(
+            "unsupported context verify output format `{other}`"
+        )),
     }
 }
 
-fn render_context_handoff_output(output: &ContextHandoffOutput, format: &str) -> Result<String, String> {
+fn render_context_handoff_output(
+    output: &ContextHandoffOutput,
+    format: &str,
+) -> Result<String, String> {
     match format {
         "json" => serde_json::to_string_pretty(output).map_err(|error| error.to_string()),
         "markdown" => Ok(render_context_handoff_markdown(output)),
         "text" => Ok(render_context_handoff_text(output)),
-        other => Err(format!("unsupported context handoff output format `{other}`")),
+        other => Err(format!(
+            "unsupported context handoff output format `{other}`"
+        )),
     }
 }
 
@@ -1768,13 +1920,22 @@ fn render_context_pack_markdown(output: &ContextPackOutput) -> String {
 
     rendered.push_str("# Monad Context Pack\n\n");
     rendered.push_str(&format!("- **Status:** `{}`\n", output.status));
-    rendered.push_str(&format!("- **Workspace root:** `{}`\n", output.workspace_root));
+    rendered.push_str(&format!(
+        "- **Workspace root:** `{}`\n",
+        output.workspace_root
+    ));
     rendered.push_str(&format!("- **Include:** `{}`\n", output.include));
     rendered.push_str(&format!("- **Max files:** `{}`\n", output.max_files));
     rendered.push_str(&format!("- **Did mutate:** `{}`\n", output.did_mutate));
     rendered.push_str(&format!("- **Files:** `{}`\n", output.file_count));
-    rendered.push_str(&format!("- **Existing:** `{}`\n", output.existing_file_count));
-    rendered.push_str(&format!("- **Missing:** `{}`\n\n", output.missing_file_count));
+    rendered.push_str(&format!(
+        "- **Existing:** `{}`\n",
+        output.existing_file_count
+    ));
+    rendered.push_str(&format!(
+        "- **Missing:** `{}`\n\n",
+        output.missing_file_count
+    ));
 
     rendered.push_str("## Files\n\n");
     rendered.push_str("| Category | Path | Exists | Bytes | Purpose |\n");
@@ -1835,7 +1996,10 @@ fn render_context_verify_markdown(output: &ContextVerifyOutput) -> String {
 
     rendered.push_str("# Monad Context Verify\n\n");
     rendered.push_str(&format!("- **Status:** `{}`\n", output.status));
-    rendered.push_str(&format!("- **Workspace root:** `{}`\n", output.workspace_root));
+    rendered.push_str(&format!(
+        "- **Workspace root:** `{}`\n",
+        output.workspace_root
+    ));
     rendered.push_str(&format!("- **Strict:** `{}`\n", output.strict));
     rendered.push_str(&format!("- **Did mutate:** `{}`\n", output.did_mutate));
     rendered.push_str(&format!("- **Errors:** `{}`\n", output.error_count));
@@ -1865,10 +2029,16 @@ fn render_context_handoff_text(output: &ContextHandoffOutput) -> String {
     rendered.push_str("=====================\n\n");
     rendered.push_str(&format!("status: {}\n", output.status));
     rendered.push_str(&format!("workspace root: {}\n", output.workspace_root));
-    rendered.push_str(&format!("current workpacket: {}\n", output.current_workpacket));
+    rendered.push_str(&format!(
+        "current workpacket: {}\n",
+        output.current_workpacket
+    ));
     rendered.push_str(&format!("summary: {}\n", output.summary));
     rendered.push_str(&format!("did mutate: {}\n", output.did_mutate));
-    rendered.push_str(&format!("command surface total: {}\n", output.command_surface_total));
+    rendered.push_str(&format!(
+        "command surface total: {}\n",
+        output.command_surface_total
+    ));
     rendered.push_str(&format!(
         "plan-backed commands: {}\n",
         output.command_surface_plan_backed
@@ -1905,7 +2075,10 @@ fn render_context_handoff_markdown(output: &ContextHandoffOutput) -> String {
 
     rendered.push_str("# Monad Context Handoff\n\n");
     rendered.push_str(&format!("- **Status:** `{}`\n", output.status));
-    rendered.push_str(&format!("- **Workspace root:** `{}`\n", output.workspace_root));
+    rendered.push_str(&format!(
+        "- **Workspace root:** `{}`\n",
+        output.workspace_root
+    ));
     rendered.push_str(&format!(
         "- **Current workpacket:** `{}`\n",
         output.current_workpacket
@@ -1946,7 +2119,6 @@ fn render_context_handoff_markdown(output: &ContextHandoffOutput) -> String {
 
     rendered
 }
-
 
 #[derive(Debug, Clone, Serialize)]
 struct DiffLineChange {
@@ -2024,8 +2196,12 @@ fn build_diff_output(left: &str, right: &str, strict: bool) -> DiffCommandOutput
     let left_exists = left_path.is_file();
     let right_exists = right_path.is_file();
 
-    let left_bytes = std::fs::metadata(left_path).ok().map(|metadata| metadata.len());
-    let right_bytes = std::fs::metadata(right_path).ok().map(|metadata| metadata.len());
+    let left_bytes = std::fs::metadata(left_path)
+        .ok()
+        .map(|metadata| metadata.len());
+    let right_bytes = std::fs::metadata(right_path)
+        .ok()
+        .map(|metadata| metadata.len());
 
     let compatibility_mirror_detected = right == "workspace.toml"
         && right_contents
@@ -2039,7 +2215,9 @@ fn build_diff_output(left: &str, right: &str, strict: bool) -> DiffCommandOutput
             .unwrap_or(false);
 
     let changes = match (&left_contents, &right_contents) {
-        (Some(left_contents), Some(right_contents)) => diff_line_changes(left_contents, right_contents),
+        (Some(left_contents), Some(right_contents)) => {
+            diff_line_changes(left_contents, right_contents)
+        }
         (Some(left_contents), None) => left_contents
             .lines()
             .enumerate()
@@ -2080,9 +2258,14 @@ fn build_diff_output(left: &str, right: &str, strict: bool) -> DiffCommandOutput
     ];
 
     if compatibility_mirror_detected {
-        notes.push("workspace.toml appears to identify itself as a compatibility mirror.".to_string());
+        notes.push(
+            "workspace.toml appears to identify itself as a compatibility mirror.".to_string(),
+        );
     } else if right == "workspace.toml" && right_exists {
-        notes.push("workspace.toml exists but does not clearly identify itself as a compatibility mirror.".to_string());
+        notes.push(
+            "workspace.toml exists but does not clearly identify itself as a compatibility mirror."
+                .to_string(),
+        );
     }
 
     if !equal && left_exists && right_exists {
@@ -2228,7 +2411,10 @@ fn render_diff_markdown(output: &DiffCommandOutput) -> String {
         "- **Compatibility mirror detected:** `{}`\n",
         output.compatibility_mirror_detected
     ));
-    rendered.push_str(&format!("- **Changed lines:** `{}`\n\n", output.changed_line_count));
+    rendered.push_str(&format!(
+        "- **Changed lines:** `{}`\n\n",
+        output.changed_line_count
+    ));
 
     if !output.changes.is_empty() {
         rendered.push_str("## Changes\n\n");
@@ -2270,7 +2456,6 @@ fn render_diff_markdown(output: &DiffCommandOutput) -> String {
 
     rendered
 }
-
 
 #[derive(Debug, Clone, Serialize)]
 struct ConfigEntry {
