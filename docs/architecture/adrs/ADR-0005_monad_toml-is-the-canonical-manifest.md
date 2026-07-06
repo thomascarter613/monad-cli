@@ -1,0 +1,1 @@
+ADR-0005_monad_toml-is-the-canonical-manifest.md

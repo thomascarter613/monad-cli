@@ -1,0 +1,1 @@
+ADR-0003_local-first-core.md

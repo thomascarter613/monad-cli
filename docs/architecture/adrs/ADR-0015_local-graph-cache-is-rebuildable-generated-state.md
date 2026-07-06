@@ -1,0 +1,1 @@
+ADR-0015_local-graph-cache-is-rebuildable-generated-state.md

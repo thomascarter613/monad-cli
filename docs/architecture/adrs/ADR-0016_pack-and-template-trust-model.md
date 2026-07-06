@@ -1,0 +1,1 @@
+ADR-0016_pack-and-template-trust-model.md

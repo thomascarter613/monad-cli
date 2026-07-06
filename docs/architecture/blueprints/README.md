@@ -1,0 +1,1 @@
+# C4 Model diagrams (Context, Container, Component) via Mermaid/PlantUML

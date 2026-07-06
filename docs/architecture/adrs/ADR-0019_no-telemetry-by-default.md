@@ -1,0 +1,1 @@
+ADR-0019_no-telemetry-by-default.md

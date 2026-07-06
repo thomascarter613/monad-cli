@@ -1,0 +1,1 @@
+ADR-0008_lifecycle-graph-as-core-model.md

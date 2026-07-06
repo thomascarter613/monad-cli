@@ -1,0 +1,1 @@
+ADR-0018_hosted-control-plane-is-optional-projection-layer.md

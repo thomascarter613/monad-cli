@@ -1,0 +1,1 @@
+ADR-0020_ai-provider-port-and-noop-adapter.md

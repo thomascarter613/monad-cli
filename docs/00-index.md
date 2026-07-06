@@ -1,6 +1,6 @@
 # Monad Documentation Index
 
-## Product
+## Product and Domain
 
 - `docs/product/v1-scope.md`
 - `docs/product/v1-non-goals.md`
@@ -15,17 +15,13 @@
 - `docs/architecture/plan-apply-model.md`
 - `docs/architecture/rust-crate-layout.md`
 
-## Work packets
-
-- `docs/workpackets/schema.md`
-- `docs/workpackets/index.md`
-- `docs/workpackets/WP-0000-work-packet-specification-and-schema.md`
-
-## ADRs
+## Architecture/ADRs
 
 - `docs/adr/README.md`
 - `docs/adr/0001-use-rust-for-monad-cli.md`
 
-## Commands
+## Roadmap/Workpackets
 
-- `docs/product/v1-command-reference.md`
+- `docs/workpackets/schema.md`
+- `docs/workpackets/index.md`
+- `docs/workpackets/WP-0000-work-packet-specification-and-schema.md`
