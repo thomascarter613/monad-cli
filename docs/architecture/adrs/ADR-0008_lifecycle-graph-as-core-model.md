@@ -1,7 +1,7 @@
 ---
 id: ADR-0008
 title: Lifecycle Graph as Core Model
-status: proposed
+status: accepted
 date: 2026-07-02
 supersedes: []
 superseded_by: null

@@ -1,7 +1,7 @@
 ---
 id: ADR-0007
 title: Modular Rust Workspace
-status: proposed
+status: accepted
 date: 2026-07-02
 supersedes: []
 superseded_by: null

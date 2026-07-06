@@ -1,7 +1,7 @@
 ---
 id: ADR-0009
 title: Documentation-as-Code
-status: proposed
+status: accepted
 date: 2026-07-02
 supersedes: []
 superseded_by: null
