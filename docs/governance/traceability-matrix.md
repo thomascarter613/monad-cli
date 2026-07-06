@@ -1,35 +1,8 @@
 # Monad Traceability Matrix
 
-## Purpose
+This document is the operational traceability matrix for Monad CLI / Monad OS governance.
 
-This document is the operational traceability matrix for Monad OS / Monad CLI.
-
-It connects:
-
-```text
-business goals
-user needs
-requirements
-ADRs
-work packets
-BDD scenarios
-tests
-policies
-findings
-risks
-release evidence
-documentation
-```
-
-The full planning narrative lives in:
-
-```text
-docs/planning/0018-traceability-matrix.md
-```
-
-This file is the concise governance registry intended for ongoing maintenance and future machine validation.
-
----
+It connects requirements, ADRs, work packets, tests, policies, risks, release evidence, and documentation so the repository can explain why artifacts exist and how readiness is proven.
 
 ## Traceability Doctrine
 
@@ -46,15 +19,9 @@ what risk it mitigates
 what release evidence proves readiness
 ```
 
-Traceability should remain local-first and repository-native.
+Traceability remains local-first and repository-native. No hosted GRC system is required for core traceability.
 
-No hosted GRC system, external requirements database, or SaaS tracker is required for core traceability.
-
----
-
-## Traceability Chain
-
-Monad’s primary traceability chain is:
+## Primary Traceability Chain
 
 ```text
 Requirement
@@ -64,211 +31,132 @@ Requirement
         -> Test Evidence
           -> Policy / Finding / Risk
             -> Release Evidence
+              -> Documentation
 ```
-
-A mature release should be able to trace critical behavior across that chain.
-
----
 
 ## Registry Sources
 
-| Registry             | Source File                                   |
-| -------------------- | --------------------------------------------- |
-| ID conventions       | `docs/reference/ids.md`                       |
-| Requirements         | `docs/product/requirements-index.md`          |
-| ADRs                 | `docs/architecture/decision-records/index.md` |
-| Work Packets         | `docs/roadmap/work-packets/index.md`          |
-| BDD Scenarios        | `docs/testing/bdd-index.md`                   |
-| Findings             | `docs/reference/findings.md`                  |
-| Risks                | `governance/risk-register.md`                 |
-| Release Evidence     | `docs/reference/release-evidence.md`          |
-| Full Planning Matrix | `docs/planning/0018-traceability-matrix.md`   |
+| Registry | Source File |
+| -------- | ----------- |
+| ADRs | `docs/architecture/adrs/index.md` |
+| Architecture blueprints | `docs/architecture/blueprints/README.md` |
+| Command architecture | `docs/architecture/other/commands/README.md` |
+| Data governance | `docs/data/index.md` |
+| Documentation governance | `docs/governance/docs-governance/index.md` |
+| Infrastructure governance | `docs/governance/infra-governance/index.md` |
+| Compliance governance | `docs/governance/compliance/` |
+| RFC process | `docs/governance/rfcs/README.md` |
+| Work packets | `docs/roadmap/work-packets/index.md` |
+| BDD scenarios | `docs/testing/bdd-index.md` |
+| Findings | `docs/reference/findings.md` |
+| Release evidence | `docs/reference/release-evidence.md` |
+| Risk register | `governance/risk-register.md` |
 
----
+## Requirement to ADR Matrix
 
-# Requirement to ADR to Work Packet Matrix
+| Requirement | Description | Primary ADRs |
+| ----------- | ----------- | ------------ |
+| FR-001 | Version and runtime identity reporting | ADR-0001, ADR-0012 |
+| FR-002 | Command catalog and honest command status | ADR-0012, ADR-0014 |
+| FR-003 | Repository inspection and discovery | ADR-0002, ADR-0003, ADR-0008 |
+| FR-004 | Canonical manifest/config resolution | ADR-0005 |
+| FR-005 | Baseline validation and diagnostics | ADR-0010, ADR-0014 |
+| FR-006 | Lifecycle graph generation | ADR-0008, ADR-0015 |
+| FR-007 | Documentation-as-code validation | ADR-0009 |
+| FR-008 | Deterministic context/handoff generation | ADR-0011, ADR-0020 |
+| FR-009 | Plan, diff, dry-run, and apply | ADR-0006, ADR-0014 |
+| FR-010 | Pack/template generation with trust metadata | ADR-0016 |
+| FR-011 | Plugin extension boundary | ADR-0017 |
+| FR-012 | Optional hosted projection | ADR-0018, ADR-0019 |
+| NFR-001 | Local-first operation | ADR-0003 |
+| NFR-002 | AI optionality | ADR-0004, ADR-0011, ADR-0020 |
+| NFR-003 | No telemetry by default | ADR-0019 |
+| NFR-004 | Versioned machine-readable output | ADR-0013 |
+| NFR-005 | Stable exit code taxonomy | ADR-0014 |
+| NFR-006 | Rebuildable generated state | ADR-0015 |
+| NFR-007 | Policy-as-code governance | ADR-0010 |
+| NFR-008 | Native tool coordination | ADR-0002 |
 
-| Requirement                                   | ADRs                         | Work Packets                                |
-| --------------------------------------------- | ---------------------------- | ------------------------------------------- |
-| FR-001: Version Reporting                     | ADR-0001, ADR-0012           | WP-0001, WP-0008, WP-0020                   |
-| FR-002: Command Catalog                       | ADR-0012                     | WP-0001, WP-0020                            |
-| FR-003: List Commands                         | ADR-0012                     | WP-0001, WP-0008, WP-0020                   |
-| FR-004: Configuration and Manifest Resolution | ADR-0003, ADR-0005           | WP-0002, WP-0005, WP-0008, WP-0021          |
-| FR-005: Repository Inspection                 | ADR-0002, ADR-0003, ADR-0008 | WP-0008, WP-0024                            |
-| FR-006: Baseline Check                        | ADR-0005, ADR-0010, ADR-0012 | WP-0008, WP-0013, WP-0025                   |
-| FR-007: Doctor Diagnostics                    | ADR-0002, ADR-0003, ADR-0005 | WP-0008, WP-0027                            |
-| FR-008: Lifecycle Graph                       | ADR-0008, ADR-0009, ADR-0010 | WP-0010, WP-0026                            |
-| FR-009: Context Handoff                       | ADR-0004, ADR-0011           | WP-0012, WP-0026                            |
-| FR-010: Documentation Check                   | ADR-0009                     | WP-0011, WP-0025                            |
-| FR-011: Plan Creation                         | ADR-0004, ADR-0006           | WP-0004, WP-0022                            |
-| FR-012: Apply With Approval                   | ADR-0006                     | WP-0004, WP-0022                            |
-| NFR-001: Local-First Operation                | ADR-0003                     | WP-0001, WP-0002, WP-0008                   |
-| NFR-002: Deterministic Behavior               | ADR-0001, ADR-0003, ADR-0011 | WP-0001, WP-0002, WP-0008, WP-0010, WP-0012 |
-| NFR-003: No Network by Default                | ADR-0003, ADR-0004           | WP-0003, WP-0017, WP-0024                   |
-| NFR-004: No Telemetry by Default              | ADR-0003                     | WP-0017                                     |
-| NFR-005: AI Optionality                       | ADR-0004, ADR-0011           | WP-0012, WP-0026                            |
-| NFR-006: No Required Database                 | ADR-0003, ADR-0008           | WP-0002, WP-0010                            |
-| NFR-007: Structured Output                    | ADR-0001, ADR-0008           | WP-0008, WP-0010, WP-0015                   |
-| NFR-008: Stable Exit Codes                    | ADR-0012                     | WP-0008, WP-0017, WP-0020                   |
-| NFR-009: Read-Only Safety                     | ADR-0003, ADR-0006           | WP-0003, WP-0008, WP-0011                   |
-| NFR-010: Plan-Backed Mutation                 | ADR-0006                     | WP-0003, WP-0004, WP-0014, WP-0022          |
+## ADR to Governance Documentation Matrix
 
----
+| ADR | Governance / Architecture Docs |
+| --- | ------------------------------ |
+| ADR-0001 | `docs/architecture/rust-crate-layout.md`, `docs/architecture/cli-doctrine.md` |
+| ADR-0002 | `docs/architecture/tech-radar.md`, `docs/architecture/workspace-model.md` |
+| ADR-0003 | `docs/architecture/disaster-recovery-plan.md`, `docs/governance/infra-governance/environment-contracts.md` |
+| ADR-0004 | `docs/architecture/other/context/README.md`, `docs/architecture/other/commands/README.md` |
+| ADR-0005 | `docs/architecture/workspace-model.md`, `docs/data/index.md` |
+| ADR-0006 | `docs/architecture/plan-apply-model.md`, `docs/architecture/cli-doctrine.md` |
+| ADR-0007 | `docs/architecture/rust-crate-layout.md` |
+| ADR-0008 | `docs/architecture/other/graphs/README.md` |
+| ADR-0009 | `docs/governance/docs-governance/index.md` |
+| ADR-0010 | `docs/governance/docs-governance/drift-detection.md`, `docs/governance/compliance/soc2-mapping.md` |
+| ADR-0011 | `docs/architecture/other/context/README.md`, `docs/governance/compliance/gdpr-data-lineage.md` |
+| ADR-0012 | `docs/architecture/other/commands/README.md`, `docs/architecture/cli-doctrine.md` |
+| ADR-0013 | `docs/data/canonical-schema.json`, `docs/governance/traceability-matrix.md` |
+| ADR-0014 | `docs/architecture/other/commands/README.md`, `docs/architecture/cli-doctrine.md` |
+| ADR-0015 | `docs/data/retention-policy.md`, `docs/architecture/other/graphs/README.md` |
+| ADR-0016 | `docs/architecture/threat-modeling/README.md`, `docs/governance/compliance/soc2-mapping.md` |
+| ADR-0017 | `docs/architecture/threat-modeling/README.md`, `docs/governance/rfcs/README.md` |
+| ADR-0018 | `docs/governance/infra-governance/index.md`, `docs/architecture/disaster-recovery-plan.md` |
+| ADR-0019 | `docs/governance/compliance/data-retention-policy.md`, `docs/governance/infra-governance/environment-contracts.md` |
+| ADR-0020 | `docs/architecture/other/context/README.md`, `docs/governance/compliance/gdpr-data-lineage.md` |
 
-# Requirement to BDD to Test Matrix
+## Governance Area Matrix
 
-| Requirement | BDD Scenarios                                                        | Primary Test Evidence                              |
-| ----------- | -------------------------------------------------------------------- | -------------------------------------------------- |
-| FR-001      | BDD-VERSION-001, BDD-VERSION-002                                     | CLI smoke tests                                    |
-| FR-002      | BDD-CATALOG-001, BDD-CATALOG-002, BDD-CATALOG-003, BDD-CATALOG-004   | command catalog unit tests, command contract tests |
-| FR-003      | BDD-CATALOG-005, BDD-CATALOG-006, BDD-CATALOG-007                    | CLI smoke tests, snapshot tests                    |
-| FR-004      | BDD-MANIFEST-001, BDD-MANIFEST-002, BDD-MANIFEST-003, BDD-CONFIG-001 | manifest unit tests, fixture integration tests     |
-| FR-005      | BDD-INSPECT-001, BDD-INSPECT-002, BDD-INSPECT-003                    | inspection fixture tests, read-only safety tests   |
-| FR-006      | BDD-CHECK-001, BDD-CHECK-002, BDD-CHECK-003                          | check fixture tests, exit code tests               |
-| FR-007      | BDD-DOCTOR-001, BDD-DOCTOR-002, BDD-DOCTOR-003                       | doctor fixture tests, snapshot tests               |
-| FR-008      | BDD-GRAPH-001, BDD-GRAPH-002, BDD-GRAPH-003, BDD-GRAPH-004           | graph invariant tests, schema tests                |
-| FR-009      | BDD-CONTEXT-001, BDD-CONTEXT-SECRET-001, BDD-AI-OPTIONAL-001         | context fixture tests, redaction tests             |
-| FR-010      | BDD-DOCS-001, BDD-DOCS-002, BDD-DOCS-003                             | docs fixture tests                                 |
-| FR-011      | BDD-PLAN-001, BDD-PLAN-002, BDD-PLAN-DRYRUN-001                      | plan schema tests, mutation safety tests           |
-| FR-012      | BDD-APPLY-001, BDD-APPLY-002, BDD-APPLY-SAFE-001, BDD-APPLY-SAFE-002 | apply contract tests, filesystem mutation tests    |
-| NFR-001     | BDD-NETWORK-001, BDD-AI-OPTIONAL-001                                 | offline tests, no-AI tests                         |
-| NFR-002     | BDD-GRAPH-003, BDD-CONTEXT-001                                       | snapshot tests, deterministic fixture tests        |
-| NFR-003     | BDD-NETWORK-001                                                      | no-network tests or review gate                    |
-| NFR-004     | BDD-TELEMETRY-001                                                    | telemetry review gate                              |
-| NFR-005     | BDD-AI-OPTIONAL-001                                                  | no-AI tests                                        |
-| NFR-009     | BDD-INSPECT-003, BDD-APPLY-002                                       | mutation safety tests                              |
-| NFR-010     | BDD-PLAN-001, BDD-APPLY-SAFE-001                                     | plan/apply contract tests                          |
+| Governance Area | Primary Files | Protected Outcomes |
+| --------------- | ------------- | ------------------ |
+| Compliance | `docs/governance/compliance/*.md` | retention, lineage, SOC 2-style readiness mapping |
+| Documentation governance | `docs/governance/docs-governance/*.md` | documentation invariants, audits, style, drift detection |
+| Infrastructure governance | `docs/governance/infra-governance/*.md` | environment contracts, provisioning rules, infrastructure invariants |
+| RFC governance | `docs/governance/rfcs/README.md` | structured proposal workflow before durable decisions |
+| Data governance | `docs/data/*.md`, `docs/data/*.json` | retention, archival, canonical, forensic, and migration evidence |
+| Threat modeling | `docs/architecture/threat-modeling/README.md` | trust boundaries, mitigations, policy/test linkage |
 
----
+## Policy to Evidence Matrix
 
-# Policy to Requirement to Finding Matrix
+| Policy / Control | Protected Requirements | Evidence Candidates |
+| ---------------- | ---------------------- | ------------------- |
+| POLICY-CANONICAL-MANIFEST | FR-004, NFR-001 | workspace model, manifest tests, canonical schema |
+| POLICY-COMMAND-HONESTY | FR-002, NFR-005 | command architecture docs, command contract tests |
+| POLICY-DOCS-REQUIRED | FR-007 | documentation audit, docs governance index |
+| POLICY-NO-UNSAFE-MUTATION | FR-009 | plan/apply model, dry-run tests, apply reports |
+| POLICY-SECRET-REDACTION | FR-008, NFR-002 | context docs, GDPR lineage, redaction tests |
+| POLICY-NO-TELEMETRY-BY-DEFAULT | FR-012, NFR-003 | ADR-0019, environment contracts, observability docs |
+| POLICY-PACK-PLUGIN-TRUST | FR-010, FR-011 | threat models, SOC 2 mapping, RFC process |
+| POLICY-GENERATED-STATE-CLASSIFICATION | FR-006, NFR-006 | data governance, graph docs, retention policy |
+| POLICY-RELEASE-READINESS | FR-009, FR-012 | release architecture, release evidence, traceability matrix |
 
-| Policy                         | Protected Requirements           | Findings                                                             |
-| ------------------------------ | -------------------------------- | -------------------------------------------------------------------- |
-| POLICY-CANONICAL-MANIFEST      | FR-004, FR-006, NFR-002          | MANIFEST-MISSING, MANIFEST-INVALID-TOML, MANIFEST-CANONICAL-CONFLICT |
-| POLICY-COMMAND-CATALOG         | FR-002, FR-003, FR-006           | COMMAND-CATALOG-DRIFT                                                |
-| POLICY-DOCS-REQUIRED           | FR-010, FR-006                   | DOCS-REQUIRED-MISSING                                                |
-| POLICY-NO-UNSAFE-MUTATION      | FR-011, FR-012, NFR-009, NFR-010 | MUTATION-PLAN-REQUIRED, APPLY-UNPLANNED-FILE-OP                      |
-| POLICY-SECRET-REDACTION        | FR-009                           | CONTEXT-SECRET-RISK                                                  |
-| POLICY-PLACEHOLDER-HONESTY     | FR-002, FR-003, NFR-008          | COMMAND-PLACEHOLDER-MISLEADING                                       |
-| POLICY-AI-OPTIONAL             | FR-009, NFR-001, NFR-005         | AI-REQUIRED-FOR-CORE-COMMAND                                         |
-| POLICY-NO-NETWORK-BY-DEFAULT   | NFR-001, NFR-003                 | NETWORK-CALL-UNEXPECTED                                              |
-| POLICY-NO-TELEMETRY-BY-DEFAULT | NFR-004                          | TELEMETRY-UNEXPECTED                                                 |
-| POLICY-RELEASE-READINESS       | FR-011, FR-012, NFR-010          | RELEASE-EVIDENCE-MISSING, RELEASE-GATE-FAILED                        |
+## Risk to Control Matrix
 
----
-
-# Risk to Control to Evidence Matrix
-
-| Risk                                        | Controls                                                   | Evidence                     |
-| ------------------------------------------- | ---------------------------------------------------------- | ---------------------------- |
-| RISK-001: Command Catalog Drift             | command catalog contract tests, placeholder honesty policy | EVID-004                     |
-| RISK-002: Source-of-Truth Confusion         | canonical manifest policy, manifest fixture tests          | EVID-003, EVID-009           |
-| RISK-003: Unsafe Mutation                   | plan-backed mutation, dry-run tests, apply contract tests  | EVID-003, EVID-012           |
-| RISK-004: Secret Leakage                    | secret redaction policy, context redaction tests           | EVID-003, EVID-008           |
-| RISK-005: AI Overreach                      | AI optionality policy, plan-backed AI suggestions          | EVID-009                     |
-| RISK-006: Hosted Prematurity                | local-first ADR, hosted deferral in roadmap                | EVID-006                     |
-| RISK-007: Native Tool Inconsistency         | native tool adapters, doctor diagnostics                   | EVID-003                     |
-| RISK-008: Docs Drift                        | docs check, docs-required policy                           | EVID-005                     |
-| RISK-009: Policy False Positives            | policy explain, waiver model                               | EVID-009                     |
-| RISK-010: Release Regression                | release readiness checks, CI gate                          | EVID-001, EVID-002, EVID-003 |
-| RISK-011: Schema Breakage                   | schema tests, versioned schemas                            | EVID-003                     |
-| RISK-012: Hidden Network Calls              | no-network policy, review gate                             | EVID-008                     |
-| RISK-013: Hidden Telemetry                  | no-telemetry policy, security review                       | EVID-008                     |
-| RISK-014: Planning and Implementation Drift | traceability matrix, work-packet validation, dogfooding    | EVID-005, EVID-007           |
-
----
-
-# Work Packet to Docs to Tests Matrix
-
-| Work Packet             | Required Docs                                | Expected Tests                                      |
-| ----------------------- | -------------------------------------------- | --------------------------------------------------- |
-| WP-0000                 | work-packet specification, work-packet index | future work-packet validation fixtures              |
-| WP-0001                 | CLI docs, command catalog docs               | CLI smoke tests, command contract tests             |
-| WP-0002                 | manifest reference                           | manifest unit tests, fixture tests                  |
-| WP-0003                 | filesystem safety docs                       | read-only safety tests, dry-run tests               |
-| WP-0004                 | plan schema docs                             | plan schema tests, apply contract tests             |
-| WP-0005                 | init command docs                            | init fixture tests, no-overwrite tests              |
-| WP-0006                 | pack/template docs                           | template fixture tests                              |
-| WP-0007                 | add/generate docs                            | generator fixture tests, plan-backed mutation tests |
-| WP-0008                 | command docs                                 | CLI integration tests, fixture tests                |
-| WP-0009                 | native tool coordination docs                | adapter tests, command invocation tests             |
-| WP-0010                 | graph schema docs                            | graph invariant tests                               |
-| WP-0011                 | docs/ADR/workpacket docs                     | docs fixture tests                                  |
-| WP-0012                 | context handoff docs                         | context/redaction tests                             |
-| WP-0013                 | policy/waiver docs                           | policy fixture tests                                |
-| WP-0014                 | mutation command docs                        | mutation safety tests                               |
-| WP-0015                 | release docs                                 | release readiness tests                             |
-| WP-0016                 | testing strategy                             | full test matrix                                    |
-| WP-0017                 | CI/security docs                             | CI, security, quality gates                         |
-| WP-0018                 | dogfood docs                                 | dogfood test/report                                 |
-| WP-0019 through WP-0031 | release hardening docs                       | release candidate evidence                          |
-
----
-
-# Release Evidence to Source Matrix
-
-| Evidence                                      | Source                                                    |
-| --------------------------------------------- | --------------------------------------------------------- |
-| EVID-001: Formatting Passed                   | `cargo fmt --all --check`                                 |
-| EVID-002: Workspace Check Passed              | `cargo check --workspace`                                 |
-| EVID-003: Test Suite Passed                   | `cargo test --workspace`                                  |
-| EVID-004: Command Catalog Contract Passed     | `cargo test -p monad-cli --test command_catalog_contract` |
-| EVID-005: Docs Check Passed                   | future `monad docs check`                                 |
-| EVID-006: ADR Index Valid                     | future `monad adr validate`                               |
-| EVID-007: Work Packet Index Valid             | future `monad workpacket validate`                        |
-| EVID-008: Security Checks Passed              | security CI / review gate                                 |
-| EVID-009: Policy Checks Passed                | future `monad policy check`                               |
-| EVID-010: Release Notes Prepared              | release docs                                              |
-| EVID-011: Changelog Updated                   | changelog file                                            |
-| EVID-012: Apply Reports Present When Required | apply report artifacts                                    |
-
----
-
-## Validation Targets
-
-Future `monad trace check` should validate:
-
-1. Every requirement referenced by this file exists.
-2. Every ADR referenced by this file exists.
-3. Every work packet referenced by this file exists.
-4. Every BDD scenario referenced by this file exists.
-5. Every policy referenced by this file exists.
-6. Every finding referenced by this file exists.
-7. Every risk referenced by this file exists.
-8. Every release evidence ID referenced by this file exists.
-9. Every P0 requirement has at least one related work packet.
-10. Every P0 requirement has at least one planned or implemented test.
-11. Every safety requirement has a related risk or policy.
-12. Every release evidence ID has a source command or source artifact.
-
-Initial validation should warn before it fails.
-
----
+| Risk | Control | Evidence |
+| ---- | ------- | -------- |
+| Command catalog drift | command honesty policy, catalog contract tests | command architecture docs |
+| Source-of-truth confusion | canonical manifest policy | workspace model, data governance index |
+| Unsafe mutation | plan-backed mutation | plan/apply model, apply reports |
+| Secret leakage | redaction and context rules | context docs, privacy lineage docs |
+| AI overreach | no-op adapter and deterministic context | ADR-0020, context docs |
+| Hosted prematurity | hosted projection is optional | infra governance, ADR-0018 |
+| Docs drift | docs audit and invariants | docs-governance files |
+| Schema breakage | versioned output schemas | data schemas, ADR-0013 |
+| Hidden telemetry | no telemetry by default | compliance retention, environment contracts |
+| Infrastructure drift | environment contracts and infra invariants | infra-governance docs |
 
 ## Maintenance Rules
 
-Update this file when:
+- Update this matrix when ADRs are added, superseded, or renamed.
+- Update this matrix when governance directories add new canonical files.
+- Prefer local repository paths over external trackers.
+- Do not reference planned artifacts as implemented evidence without marking them planned.
+- Keep traceability aligned with release evidence and risk register.
 
-```text
-requirements are added, removed, renamed, or superseded
-ADRs are accepted, proposed, superseded, or rejected
-work packets are added, deferred, closed, or superseded
-BDD scenarios are normalized
-policies are added or changed
-findings are added or changed
-risks are added or closed
-release evidence requirements change
-```
+## Future Automation
 
-Do not silently remove IDs.
+Future Monad commands should be able to validate this matrix by checking:
 
-Deprecated or superseded IDs should remain traceable.
-
----
-
-## Final Rule
-
-Monad’s traceability matrix should prove that the repository’s important artifacts are not isolated documents.
-
-They are connected evidence in a local-first governance system.
+- referenced files exist;
+- ADR IDs exist;
+- work packet IDs exist;
+- policy IDs exist;
+- release evidence exists where claimed;
+- planned evidence is not mistaken for accepted evidence.
