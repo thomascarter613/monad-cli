@@ -30,33 +30,106 @@ docs
 │   ├── decision-records
 │   │   └── index.md
 │   ├── disaster-recovery-plan.md
+│   ├── other
+│   │   ├── commands
+│   │   │   ├── monad-cli.md
+│   │   │   └── README.md
+│   │   ├── context
+│   │   │   └── README.md
+│   │   ├── graphs
+│   │   │   └── README.md
+│   │   ├── observability
+│   │   │   └── README.md
+│   │   ├── releases
+│   │   │   └── README.md
+│   │   └── security
+│   │       └── README.md
 │   ├── plan-apply-model.md
 │   ├── rust-crate-layout.md
 │   ├── tech-radar.md
 │   ├── threat-modeling
 │   │   └── README.md
 │   └── workspace-model.md
+├── artifacts
+│   ├── artifact-audit.md
+│   ├── artifact-governance.md
+│   ├── artifact-lifecycle.md
+│   ├── artifact-provenance-ledger.md
+│   ├── index.md
+│   └── release-evidence.md
+├── data
+│   ├── archival-process.md
+│   ├── archival-schema.json
+│   ├── canonical-schema.json
+│   ├── forensic-schema.json
+│   ├── index.md
+│   ├── migration-governance.md
+│   ├── migration-history.md
+│   ├── migration-replay.md
+│   └── retention-policy.md
 ├── development
 │   ├── ci-cd-pipeline-spec.md
 │   ├── local-dev-accelerator.md
 │   ├── onboarding.md
 │   ├── style-and-patterns.md
 │   └── testing-strategy.md
+├── epistemics
+│   ├── ambiguity-elimination.md
+│   ├── index.md
+│   ├── institutional-interpretation.md
+│   ├── meaning-preservation.md
+│   └── semantic-stability.md
+├── ergonomics
+│   ├── cognitive-load-map.md
+│   ├── complexity-controls.md
+│   ├── index.md
+│   ├── safe-onboarding.md
+│   └── steward-ergonomics.md
+├── evolution
+│   ├── anti-drift-mechanisms.md
+│   ├── architectural-evolution.md
+│   ├── domain-evolution.md
+│   ├── evolution-constraints.md
+│   ├── index.md
+│   └── rule-evolution.md
 ├── governance
-│   ├── compliaance
+│   ├── compliance
 │   │   ├── data-retention-policy.md
 │   │   ├── gdpr-data-lineage.md
 │   │   └── soc2-mapping.md
-│   ├── drift-detection.md
-│   ├── open-source-licenses.md
-│   ├── README.md
+│   ├── docs-governance
+│   │   ├── documentation-audit.md
+│   │   ├── documentation-governance.md
+│   │   ├── documentation-invariants.md
+│   │   ├── drift-detection.md
+│   │   ├── index.md
+│   │   ├── open-source-licenses.md
+│   │   ├── README.md
+│   │   └── style-guide.md
+│   ├── infra-governance
+│   │   ├── environment-contracts.md
+│   │   ├── index.md
+│   │   ├── infra-drift-detection.md
+│   │   ├── infra-invariants.md
+│   │   └── provisioning-governance.md
 │   ├── rfcs
-│   ├── risk-register.md
 │   └── traceability-matrix.md
 ├── interfaces
 │   ├── api-specs
 │   ├── schemas
 │   └── webhooks-and-events.md
+├── interoperability
+│   ├── cross-system-contracts.md
+│   ├── external-governance.md
+│   ├── federation-governance.md
+│   ├── index.md
+│   └── interoperability-invariants.md
+├── meta
+│   ├── definitions.md
+│   ├── glossary.md
+│   ├── index.md
+│   ├── institutional-terms.md
+│   └── taxonomy.md
 ├── operations
 │   ├── capacity-planning.md
 │   ├── runbooks
@@ -67,18 +140,13 @@ docs
 │       ├── alert-definitions.md
 │       ├── dashboards.md
 │       └── metrics-dictionary.md
-├── other
-│   ├── commands
-│   │   ├── monad-cli.md
-│   │   └── README.md
-│   ├── context
-│   │   └── README.md
-│   ├── graphs
-│   │   └── README.md
-│   ├── observability
-│   ├── releases
-│   │   └── README.md
-│   └── security
+├── philosophy
+│   ├── design-rationale.md
+│   ├── governance-rationale.md
+│   ├── index.md
+│   ├── invariants-rationale.md
+│   ├── stewardship-philosophy.md
+│   └── system-philosophy.md
 ├── planning
 │   ├── 0000-product-understanding-and-assumptions.md
 │   ├── 0001-executive-summary.md
@@ -125,8 +193,8 @@ docs
 │   └── v1-scope.md
 ├── reference
 │   ├── findings.md
-│   ├── ids.md
-│   └── release-evidence.md
+│   └── ids.md
+├── risk-register.md
 ├── roadmap
 │   ├── roadmap.md
 │   └── workpackets
@@ -210,7 +278,37 @@ docs
 │       ├── WP-0029-dogfood-iteration.md
 │       ├── WP-0030-release-candidate-iteration.md
 │       └── WP-0031-v100-release.md
-└── testing
-    └── bdd-index.md
+├── roles
+│   ├── authority-boundaries.md
+│   ├── index.md
+│   ├── philosophy
+│   ├── role-charters.md
+│   └── stewardship-contracts.md
+├── safety
+│   ├── governance-safety.md
+│   ├── harm-model.md
+│   ├── index.md
+│   ├── institutional-safety.md
+│   ├── risk-register.md
+│   └── safety-invariants.md
+├── testing
+│   └── bdd-index.md
+├── toolchain
+│   ├── ai-assistance-governance.md
+│   ├── compiler-governance.md
+│   ├── generator-governance.md
+│   ├── index.md
+│   └── toolchain-governance.md
+├── validation
+│   ├── cross-domain-validation.md
+│   ├── domain-validation.md
+│   ├── index.md
+│   └── institutional-validation.md
+└── verification
+    ├── correctness-proofs.md
+    ├── formal-methods.md
+    ├── governance-verification.md
+    ├── index.md
+    └── invariant-checkers.md
 
-34 directories, 180 files
+50 directories, 262 files
