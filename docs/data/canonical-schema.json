@@ -1,2 +1,164 @@
-# canonical-schema.json
-Placeholder for governance-grade documentation.
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://monad.local/schemas/data/canonical-schema.json",
+  "title": "Monad Canonical Data Record",
+  "description": "Schema for durable Monad data records that represent canonical or approved repository evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "record_id",
+    "record_type",
+    "status",
+    "source_of_truth",
+    "created_at",
+    "created_by",
+    "artifacts"
+  ],
+  "properties": {
+    "schema": {
+      "const": "monad.data.canonical"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "type": "string",
+      "enum": [
+        "manifest",
+        "lockfile",
+        "adr",
+        "work_packet",
+        "policy",
+        "plan",
+        "apply_report",
+        "release_evidence",
+        "context_manifest",
+        "graph_export",
+        "migration_record",
+        "forensic_record",
+        "archive_manifest",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "proposed",
+        "accepted",
+        "active",
+        "archived",
+        "superseded",
+        "deprecated",
+        "rejected"
+      ]
+    },
+    "source_of_truth": {
+      "type": "string",
+      "enum": [
+        "canonical",
+        "resolved",
+        "generated",
+        "archival",
+        "forensic",
+        "external_projection"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "related_adrs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^ADR-[0-9]{4}$"
+      },
+      "uniqueItems": true
+    },
+    "related_work_packets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^WP-[0-9]{4}$"
+      },
+      "uniqueItems": true
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "canonical_source",
+              "resolved_state",
+              "generated_state",
+              "evidence",
+              "archive_payload",
+              "forensic_payload",
+              "external_reference"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[A-Fa-f0-9]{64}$"
+          },
+          "content_type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "git_commit": {
+          "type": "string"
+        },
+        "workspace_root": {
+          "type": "string"
+        },
+        "monad_version": {
+          "type": "string"
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
